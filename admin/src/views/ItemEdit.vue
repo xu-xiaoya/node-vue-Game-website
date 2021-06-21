@@ -1,21 +1,22 @@
 <template>
     <div class = "about">
-        <h1>{{id ? '编辑':'新建'}}分类</h1>
+        <h1>{{id ? '编辑':'新建'}}物品分类</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
-            <el-form-item label = "上级分类">
-                <el-select v-model = "model.parent">
-                    <el-option 
-                        v-for="item in parents"
-                        :key="item._id"
-                        :label="item.name"
-                        :value="item._id"
-                    ></el-option>
-
-                </el-select>
-            </el-form-item>
             <el-form-item label = "名称">
                 <el-input v-model = "model.name"></el-input>
             </el-form-item>
+            <el-form-item label = "图标">
+                <el-upload
+                    class="avatar-uploader"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :show-file-list="false"
+                    :on-success="handleAvatarSuccess"
+                    :before-upload="beforeAvatarUpload">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form-item>
+
             <el-form-item>
               <el-button type = "primary" native-type = "el-submit">保存</el-button>  
             </el-form-item>
@@ -33,7 +34,7 @@ export default {
     data() {
         return {
             model: {},
-            parents:[]
+            imageUrl: ''
         }
     },
     methods: {
@@ -43,30 +44,24 @@ export default {
             let res;
             if (this.id) {
                 // 在使用${}使用变量时，要使用``模板字符串
-                res = await this.$http.put(`rest/categories/${this.id}`, this.model);
+                res = await this.$http.put(`rest/items/${this.id}`, this.model);
             } else {
-                res = await this.$http.post('rest/categories', this.model);
+                res = await this.$http.post('rest/items', this.model);
             }
             // 跳转到list页面
-            this.$router.push('/categories/list');
+            this.$router.push('/items/list');
             this.$message({
                 type:'success',
                 message:'保存成功'
             })
         },
         async fetch() {
-            const res = await this.$http.get(`rest/categories/${this.id}`);
+            const res = await this.$http.get(`rest/items/${this.id}`);
             this.model = res.data;
-        },
-        async fetchParents() {
-            const res = await this.$http.get(`rest/categories`);
-            this.parents = res.data;
         }
     },
     created() {
-        this.fetchParents();
-        this.id && this.fetch(); 
-
+        this.id && this.fetch();
     }
 }
 </script>
