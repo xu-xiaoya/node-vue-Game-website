@@ -1,19 +1,20 @@
 <template>
     <div class = "about">
-        <h1>{{id ? '编辑':'新建'}}物品分类</h1>
+        <h1>{{id ? '编辑':'新建'}}物品</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
             <el-form-item label = "名称">
                 <el-input v-model = "model.name"></el-input>
             </el-form-item>
             <el-form-item label = "图标">
+                <!-- http.js中baseURL+一个后缀形成一个完整的地址 -->
                 <el-upload
                     class="avatar-uploader"
-                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :action="$http.defaults.baseURL+'/upload'"
                     :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    :on-success="afterUpload"
+                >
+                <img v-if="model.icon" :src="model.icon" class="avatar">
+                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
 
@@ -34,10 +35,14 @@ export default {
     data() {
         return {
             model: {},
-            imageUrl: ''
         }
     },
     methods: {
+        afterUpload(res) {
+            // console.log(res);
+            // 动态拓展一个属性
+            this.$set(this.model, 'icon', res.url);
+        },
         async save() {
             // console.log('save');
             
@@ -65,3 +70,30 @@ export default {
     }
 }
 </script>
+
+<style>
+    .avatar-uploader .el-upload {
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+      border-color: #409EFF;
+    }
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+    .avatar {
+      width: 178px;
+      height: 178px;
+      display: block;
+    }
+</style>
+  
