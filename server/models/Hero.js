@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
     avatar:{type: String},
     title:{type: String},
     // 多个分类
-    Categories: [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],
+    categories: [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],
     scores:{
         difficult:{type:Number},
         skills:{type:Number},
@@ -19,12 +19,14 @@ const schema = new mongoose.Schema({
         description:{type:String},
         tips:{type:String},
     }],
+
     items1:[{type:mongoose.SchemaTypes.ObjectId, ref:'Item'}],
     items2:[{type:mongoose.SchemaTypes.ObjectId, ref:'Item'}],
     
     usageTips:{type:String},
     battleTips:{type:String},
     teamTips:{type:String},
+    
     partners:[{
         hero:{type:mongoose.SchemaTypes.ObjectId, ref:'Hero'},
         description:{type:String},

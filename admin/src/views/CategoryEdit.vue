@@ -10,12 +10,13 @@
                         :label="item.name"
                         :value="item._id"
                     ></el-option>
-
                 </el-select>
             </el-form-item>
+
             <el-form-item label = "名称">
                 <el-input v-model = "model.name"></el-input>
             </el-form-item>
+            
             <el-form-item>
               <el-button type = "primary" native-type = "el-submit">保存</el-button>  
             </el-form-item>
@@ -33,7 +34,7 @@ export default {
     data() {
         return {
             model: {},
-            parents:[]
+            parents:[],
         }
     },
     methods: {
