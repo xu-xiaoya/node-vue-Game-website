@@ -18,7 +18,9 @@
             </el-form-item>
             
             <el-form-item label = "文章详情">
-                <el-input type = "textarea" v-model = "model.body"></el-input>
+                <!-- 第三步 使用vue2-editor -->
+                <vue-editor useCustomImageHandler 
+                @image-added="handleImageAdded" v-model="model.body"></vue-editor>
             </el-form-item>
 
             <el-form-item>
@@ -29,7 +31,15 @@
 </template>
 
 <script>
+// 富文本编辑器 安装npm install vue2-editor
+// 第一步 引入vue2-editor
+import { VueEditor } from "vue2-editor";
+
 export default {
+    // 第二步 加上组件vue2-editor
+    components: {
+         VueEditor
+    },
     //props接收id
     //与this.$router.params.id效果相同
     props:{
@@ -67,6 +77,15 @@ export default {
         async fetchCategories() {
             const res = await this.$http.get(`rest/categories`);
             this.categories = res.data;
+        },
+        
+        async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const res = await this.$http.post('upload', formData);
+            Editor.insertEmbed(cursorLocation, "image", res.data.url);
+            resetUploader();
         }
     },
     created() {
@@ -77,27 +96,4 @@ export default {
 </script>
 
 <style>
-    .avatar-uploader .el-upload {
-      border: 1px dashed #d9d9d9;
-      border-radius: 6px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .avatar-uploader .el-upload:hover {
-      border-color: #409EFF;
-    }
-    .avatar-uploader-icon {
-      font-size: 28px;
-      color: #8c939d;
-      width: 178px;
-      height: 178px;
-      line-height: 178px;
-      text-align: center;
-    }
-    .avatar {
-      width: 178px;
-      height: 178px;
-      display: block;
-    }
 </style>
