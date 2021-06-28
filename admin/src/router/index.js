@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+import Login from "../views/Login.vue"
+
 import Main from '../views/Main.vue'
 import CategoryEdit from "../views/CategoryEdit.vue"
 import CategoryList from "../views/CategoryList.vue"
@@ -13,9 +16,16 @@ import AdEdit from "../views/AdEdit.vue"
 import AdList from "../views/AdList.vue"
 import AdminUserEdit from "../views/AdminUserEdit.vue"
 import AdminUserList from "../views/AdminUserList.vue"
+
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path:'/login',
+    name:'login',
+    component:Login,
+    meta:{ isPublic:true }
+  },
   {
     path: '/',
     name: 'main',
@@ -51,6 +61,14 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+// 限制客户端进入页面：在每一个路由加上限制条件，并跳转到指定页面
+router.beforeEach((to, from, next) => {
+  // console.log(to.meta);
+  if (!to.meta.isPublic && !localStorage.token) {
+    return next('/login');
+  }
+  next();
 })
 
 export default router

@@ -9,6 +9,22 @@ import './style.css'
 import http from './http'
 Vue.prototype.$http = http
 
+Vue.mixin({
+  computed:{
+    uploadURl() {
+      return this.$http.defaults.baseURL + '/upload'
+    }
+  },
+  methods:{
+    getAuthHeaders(){
+      return {
+        Authorization:`Bearer ${localStorage.token || ''}`
+      }
+    }
+  }
+})
+
+
 Vue.config.productionTip = false
 
 new Vue({

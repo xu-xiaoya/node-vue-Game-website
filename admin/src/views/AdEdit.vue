@@ -14,15 +14,16 @@
                     <el-col :md = "24" 
                         v-for = "(item,i) in model.items" 
                         :key = "i">
-                        
+                        <el-divider></el-divider>
                         <el-form-item label = "跳转链接（URL)">
                             <el-input v-model = "item.url"></el-input>
                         </el-form-item>
                         <el-form-item label = "图片" style="margin-top: 0.5rem;">
                             <el-upload
                                 class="avatar-uploader"
-                                :action="$http.defaults.baseURL+'/upload'"
+                                :action="uploadURl"
                                 :show-file-list="false"
+                                :headers="getAuthHeaders()"
                                 :on-success="res=>$set(item, 'image', res.url)"
                             >
                             <img v-if="item.image" :src="item.image" class="avatar">

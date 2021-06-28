@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+app.set('secret', 'djojoqhfuq561');
+
 app.use(require('cors')());
 app.use(express.json());
 // 静态文件路由

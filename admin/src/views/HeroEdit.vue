@@ -2,8 +2,7 @@
     <div class = "about">
         <h1>{{id ? '编辑':'新建'}}职业</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
-            <!-- value值，默认到skills，开发方便 -->
-            <el-tabs  value = "skills" type = "border-card">
+            <el-tabs type = "border-card" value = "skill">
                 <el-tab-pane label = "基本信息">
                     <el-form-item label = "名称">
                         <el-input v-model = "model.name"></el-input>
@@ -14,15 +13,15 @@
                     <el-form-item label = "头像">
                         <el-upload
                             class="avatar-uploader"
-                            :action="$http.defaults.baseURL+'/upload'"
+                            :action="uploadURl"
                             :show-file-list="false"
+                            :headers="getAuthHeaders()"
                             :on-success="afterUpload"
                         >
                         <img v-if="model.avatar" :src="model.avatar" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
-        
                     <el-form-item label = "类型">
                         <!-- multiple多选 -->
                         <el-select v-model = "model.categories" multiple>
@@ -35,7 +34,6 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-                    
                     <el-form-item label = "难度">
                         <el-rate style = "margin-top:0.6rem"
                             :max = "9"
@@ -64,7 +62,6 @@
                             v-model = "model.scores.survive"
                         ></el-rate>
                     </el-form-item>
-        
                     <el-form-item label = "顺风出装">
                         <el-select v-model = "model.items1" multiple>
                             <el-option 
@@ -87,7 +84,6 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-        
                     <el-form-item label = "使用技巧">
                         <el-input  type = "textarea" v-model = "model.usageTips"></el-input>
                     </el-form-item>
@@ -97,23 +93,31 @@
                     <el-form-item label = "团战思路">
                         <el-input  type = "textarea" v-model = "model.teamTips"></el-input>
                     </el-form-item>
+    
+    
+                    <el-form-item>
+                    <el-button type = "primary" native-type = "el-submit">保存</el-button>  
+                    </el-form-item>
                 </el-tab-pane>
-                <el-tab-pane label = "专精" name = "skills">
-                    <el-button size = "small" @click = "model.skills.push({})">
-                        <i class = "el-icon-plus"></i>添加专精
-                    </el-button>
+               
+
+                <el-tab-pane label = "专精" name = "skill">
+                    <el-button size = "small" @click = "model.skills.push({})"
+                    ><i class = "el-icon-plus"></i>添加专精</el-button>
                     <el-row type = "flex" style = "flex-wrap:wrap">
                         <el-col :md = "12" 
                             v-for = "(item,i) in model.skills" 
                             :key = "i">
                             
-                            <el-form-item label = "名称">
+                            <el-divider></el-divider>
+                            <el-form-item label = "专精名称">
                                 <el-input v-model = "item.name"></el-input>
                             </el-form-item>
                             <el-form-item label = "图标">
                                 <el-upload
                                     class="avatar-uploader"
-                                    :action="$http.defaults.baseURL+'/upload'"
+                                    :action="uploadURl"
+                                    :headers = "getAuthHeaders()"
                                     :show-file-list="false"
                                     :on-success="res=>$set(item, 'icon', res.url)"
                                 >
@@ -138,10 +142,7 @@
                     </el-row>
                 </el-tab-pane>
             </el-tabs>
-
-            <el-form-item style = "margin-top:1rem;">
-              <el-button type = "primary" native-type = "el-submit">保存</el-button>  
-            </el-form-item>
+            
         </el-form>
     </div>
 </template>
@@ -155,23 +156,24 @@ export default {
     },
     data() {
         return {
-            categories:[],
             items:[],
+            categories:[],
             model: {
-                name:'',
-                avatar:'',
+                items1:[],
+                items2:[],
                 scores:{
                     difficult:0
                 },
+                skills:[]
             },
+            
         }
     },
     methods: {
         afterUpload(res) {
             // console.log(res);
             // 动态拓展一个属性
-            // this.$set(this.model, 'avatar', res.url);
-            this.model.avatar = res.url;
+            this.$set(this.model, 'avatar', res.url);
         },
         async save() {
             // console.log('save');
@@ -179,23 +181,20 @@ export default {
             let res;
             if (this.id) {
                 // 在使用${}使用变量时，要使用``模板字符串
-                res = await this.$http.put(`rest/heros/${this.id}`, this.model);
+                res = await this.$http.put(`rest/items/${this.id}`, this.model);
             } else {
-                res = await this.$http.post('rest/heros', this.model);
+                res = await this.$http.post('rest/items', this.model);
             }
             // 跳转到list页面
-            this.$router.push('/heros/list');
+            this.$router.push('/items/list');
             this.$message({
                 type:'success',
                 message:'保存成功'
             })
         },
-
-        // 获取数据
         async fetch() {
-            const res = await this.$http.get(`rest/heros/${this.id}`);
-            //优先赋this.model值，res.data数据不会完整覆盖（this.model没有的数据就赋过来)
-            this.model = Object.assign({}, this.model, res.data);
+            const res = await this.$http.get(`rest/items/${this.id}`);
+            this.model = Object.assgin({}, this.model, res.data);
         },
         async fetchCategories() {
             const res = await this.$http.get(`rest/categories`);
@@ -207,9 +206,8 @@ export default {
         }
     },
     created() {
-        // 请求获取数据
-        this.fetchCategories();
         this.fetchItems();
+        this.fetchCategories();
         this.id && this.fetch();
     }
 }
@@ -217,3 +215,4 @@ export default {
 
 <style>
 </style>
+  

@@ -9,8 +9,9 @@
                 <!-- http.js中baseURL+一个后缀形成一个完整的地址 -->
                 <el-upload
                     class="avatar-uploader"
-                    :action="$http.defaults.baseURL+'/upload'"
+                    :action="uploadURl"
                     :show-file-list="false"
+                    :headers="getAuthHeaders()"
                     :on-success="afterUpload"
                 >
                 <img v-if="model.icon" :src="model.icon" class="avatar">
