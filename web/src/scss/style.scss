@@ -1,0 +1,30 @@
+@charset "utf-8";
+// 重置样式+工具类：颜色、文本对齐
+@import './reset+tools.scss';
+// flex通用布局
+@import './flex.scss';
+// padding/margin
+@import './spacing.scss';
+
+//button
+.btn {
+    border: none;
+    border-radius: 0.1538rem;
+    // map-get：从预定义的尺寸里选择一个
+    font-size: map-get($font-sizes, 'sm')*$base-font-size;
+    padding:0.2rem, 0.6rem;
+}
+//nav
+.nav {
+    .nav-item {
+        // 都给一个透明的边框可以对齐
+        border-bottom:3px solid transparent;
+        padding-bottom: 0.2rem;
+        // &.active中间不要加空格！
+        &.active {
+            // background-color: turquoise;
+            border-bottom:3px solid #fff;
+        }
+    }
+    
+}

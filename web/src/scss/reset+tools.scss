@@ -1,0 +1,70 @@
+@charset "utf-8";
+// 样式重置
+*{
+    // 全部设为包括边框的盒子类型
+    box-sizing:border-box;
+    // 取消高亮效果
+    outline: none;
+}
+html{
+    font-size: 13px;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background-color: #f1f1f1;
+}
+a {
+    color: #999;
+}
+
+
+// colors
+$colors:(
+    "primary": #db9e3f,
+    "white":#fff,
+    "light":#f9f9f9,
+    "grey":#999,
+    "grey-1":#666,
+    "dark-1":#343440,
+    "dark":#222,
+    "black":#000,
+);
+@each $colorKey, $color in $colors {
+    // 文本颜色
+    .text-#{$colorKey} {
+        color: $color;
+    };
+    // 背景颜色
+    .bg-#{$colorKey}{
+        background-color: $color;
+    }
+}
+
+
+// text-align
+// 工具类，可以直接class = ".text-left"使用
+@each $var in (left,center,right) {
+    .text-#{$var} {
+        text-align: $var;
+    }
+}
+
+// font-size
+// px-to-rem插件，alt+s默认大小，写好px大小，alt+z改为默认大小的rem倍数
+$base-font-size:1rem;//html设置了13px
+$font-sizes:(
+    xxs:0.6154,//8px
+    xs:0.7692,//10px
+    // chrome中仅支持12px以上的font-size
+    sm:0.9231,//12px
+    md:1,     //13px
+    lg:1.0770,//14px
+    xl:1.2308,//16px
+);
+@each $sizeKey,$size in $font-sizes {
+    .font-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}

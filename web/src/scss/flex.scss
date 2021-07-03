@@ -1,0 +1,41 @@
+@charset "utf-8";
+//flex
+.d-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+// 主轴对齐方式 justify-content
+$flex-jc:(
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    between:space-between,
+    around:space-around,
+);
+@each $key, $value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+// 项目对齐方式 align-items
+$flex-ai:(
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch,
+    baseline:baseline,
+);
+@each $key, $value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+.flex-1 {
+    flex:1;
+}
+// 自动拉伸
+.flex-grow-1 {
+    flex-grow: 1;
+}
