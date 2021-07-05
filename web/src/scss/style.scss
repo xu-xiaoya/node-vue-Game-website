@@ -1,10 +1,128 @@
 @charset "utf-8";
-// 重置样式+工具类：颜色、文本对齐
-@import './reset+tools.scss';
-// flex通用布局
-@import './flex.scss';
-// padding/margin
-@import './spacing.scss';
+@import './variable.scss';
+
+
+// 样式重置
+*{
+    // 全部设为包括边框的盒子类型
+    box-sizing:border-box;
+    // 取消高亮效果
+    outline: none;
+}
+html{
+    font-size: 13px;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background-color: #f1f1f1;
+}
+a {
+    color: #999;
+}
+
+
+// colors
+@each $colorKey, $color in $colors {
+    // 文本颜色
+    .text-#{$colorKey} {
+        color: $color;
+    };
+    // 背景颜色
+    .bg-#{$colorKey}{
+        background-color: $color;
+    }
+}
+
+
+// text-align
+// 工具类，可以直接class = ".text-left"使用
+@each $var in (left,center,right) {
+    .text-#{$var} {
+        text-align: $var  !important;
+    }
+}
+
+// font-size
+@each $sizeKey,$size in $font-sizes {
+    .font-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}
+
+//height,weight
+.w-100 {
+    width: 100%;
+}
+.h-100 {
+    height: 100%;
+}
+
+//flex
+.d-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+// 主轴对齐方式 justify-content
+@each $key, $value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+// 项目对齐方式 align-items
+@each $key, $value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+.flex-1 {
+    flex:1;
+}
+// 自动拉伸
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+//spacing
+@each $typeKey, $type in $spacing-types {
+    //.m-1
+    @each $sizeKey, $size in $spacing-sizes {
+        // .m-1 {margin:0.25rem}
+        .#{$typeKey}-#{$sizeKey} {
+            #{$type}: $size*$spacing-base-size;
+        }
+    }
+    // .mx-1
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$type}-left: $size*$spacing-base-size;
+            #{$type}-right: $size*$spacing-base-size;
+
+        }
+    }
+    // .my-1
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$type}-top: $size*$spacing-base-size;
+            #{$type}-bottom: $size*$spacing-base-size;
+
+        }
+    }
+
+    
+    //.mt-1
+    @each $directionKey, $direction in $spacing-directions{
+        @each $sizeKey, $size in $spacing-sizes {
+            // .mt-1 {margin-top:0.25rem}
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$type}-#{$direction} : $size*$spacing-base-size;
+            }
+        }
+    }
+}
 
 //button
 .btn {

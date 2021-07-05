@@ -49,3 +49,4 @@
 2.创建色彩和文本对齐工具类
 3.通用flex布局样式
 4.padding和margin通用样式
+5.首页导航和轮播图（vue-awesome-swiper）

@@ -12,13 +12,13 @@
     <div class = "bg-primary pt-3 pb-2">
         <div class = "nav d-flex text-white jc-around pb-1">
             <div class = "nav-item active">
-                <router-link class="nav-link  " tag = "div"  to="/">首页</router-link>
+                <router-link class="nav-link  " tag = "div"  :to="{name:'/'}">首页</router-link>
             </div>
             <div class = "nav-item">
-                <router-link class="nav-link" tag = "div" to="/">攻略</router-link>
+                <router-link class="nav-link" tag = "div" :to="{name:'/'}">攻略</router-link>
             </div>
             <div class = "nav-item">
-                <router-link class="nav-link" tag = "div" to="/">赛事中心</router-link>
+                <router-link class="nav-link" tag = "div" :to="{name:'/'}">赛事中心</router-link>
             </div>
         </div>
     </div>
