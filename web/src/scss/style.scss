@@ -66,6 +66,9 @@ a {
 .flex-column {
     flex-direction: column;
 }
+.flex-wrap {
+    flex-wrap: wrap;
+}
 // 主轴对齐方式 justify-content
 @each $key, $value in $flex-jc {
     .jc-#{$key} {
@@ -145,4 +148,22 @@ a {
         }
     }
     
+}
+
+//sprite
+.sprite{
+    background: url(../assets/img/sprite.png) no-repeat 0 0;
+    background-size: 28.8462rem;
+    // 精灵图必须设置宽高，否则无法显示
+    display:inline-block;
+    &.sprite-news {
+        width: 1.7692rem;
+	    height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
+    &.sprite-arrow {
+        width: 0.7692rem;
+	    height: 0.7692rem;
+        background-position: 38.577% 52.076%;
+    }
 }

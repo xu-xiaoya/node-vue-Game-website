@@ -50,3 +50,5 @@
 3.通用flex布局样式
 4.padding和margin通用样式
 5.首页导航和轮播图（vue-awesome-swiper）
+6.使用精灵图片（sprite)/字体图片（iconfont）
+7.卡片组件(card)
