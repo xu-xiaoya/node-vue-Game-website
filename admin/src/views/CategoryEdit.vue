@@ -4,6 +4,8 @@
         <el-form label-width = "120px" @submit.native.prevent = "save">
             <el-form-item label = "上级分类">
                 <el-select v-model = "model.parent">
+                    <!-- label决定显示的是什么，
+                        value决定真正存的值：使用id，避免分类名称改变，所属分类失效 -->
                     <el-option 
                         v-for="item in parents"
                         :key="item._id"
@@ -56,6 +58,7 @@ export default {
             })
         },
         async fetch() {
+            // 在serve中的router/index中寻找接口
             const res = await this.$http.get(`rest/categories/${this.id}`);
             this.model = res.data;
         },
@@ -65,8 +68,8 @@ export default {
         }
     },
     created() {
-        this.fetchParents();
         this.id && this.fetch(); 
+        this.fetchParents();
 
     }
 }

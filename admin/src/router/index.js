@@ -32,6 +32,7 @@ const routes = [
     component: Main,
     children:[
       {path:'/categories/create', component: CategoryEdit},
+      // props:true 代表可以把id传入到CategoryEdit组件中 =》 应在CategoryEdit组件中写props接收参数id！
       {path:'/categories/edit/:id', component: CategoryEdit, props:true},
       {path:'/categories/list', component: CategoryList},
       

@@ -53,3 +53,4 @@
 6.使用精灵图片（sprite)/字体图片（iconfont）
 7.卡片组件(card)
 8.列表卡片组件（list-card nav swiper）
+9.首页新闻资讯

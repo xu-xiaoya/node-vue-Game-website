@@ -1,4 +1,3 @@
-
 // 接收一个app参数
 module.exports = app => {
     const express = require('express');
@@ -35,7 +34,7 @@ module.exports = app => {
             queryOptions.populate = 'parent';
         }
         // 限制查找到十条数据
-        const items = await req.Model.find().setOptions(queryOptions).limit(10);
+        const items = await req.Model.find().setOptions(queryOptions).limit(100);
         res.send(items);
     })
     //资源详情 

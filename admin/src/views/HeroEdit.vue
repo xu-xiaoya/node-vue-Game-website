@@ -2,7 +2,7 @@
     <div class = "about">
         <h1>{{id ? '编辑':'新建'}}职业</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
-            <el-tabs type = "border-card" value = "skill">
+            <el-tabs type = "border-card" >
                 <el-tab-pane label = "基本信息">
                     <el-form-item label = "名称">
                         <el-input v-model = "model.name"></el-input>
@@ -181,24 +181,25 @@ export default {
             let res;
             if (this.id) {
                 // 在使用${}使用变量时，要使用``模板字符串
-                res = await this.$http.put(`rest/items/${this.id}`, this.model);
+                res = await this.$http.put(`rest/heros/${this.id}`, this.model);
             } else {
-                res = await this.$http.post('rest/items', this.model);
+                res = await this.$http.post('rest/heros', this.model);
             }
             // 跳转到list页面
-            this.$router.push('/items/list');
+            this.$router.push('/heros/list');
             this.$message({
                 type:'success',
                 message:'保存成功'
             })
         },
         async fetch() {
-            const res = await this.$http.get(`rest/items/${this.id}`);
-            this.model = Object.assgin({}, this.model, res.data);
+            const res = await this.$http.get(`rest/heros/${this.id}`);
+            // console.log(res);
+            this.model = res.data;
         },
         async fetchCategories() {
             const res = await this.$http.get(`rest/categories`);
-            this.categories = res.data;
+            this.categories = Object.assign({},this.model, res.data);
         },
         async fetchItems() {
             const res = await this.$http.get(`rest/items`);
@@ -206,9 +207,10 @@ export default {
         }
     },
     created() {
+        this.id && this.fetch();
         this.fetchItems();
         this.fetchCategories();
-        this.id && this.fetch();
+        
     }
 }
 </script>
