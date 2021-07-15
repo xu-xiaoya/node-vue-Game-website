@@ -49,8 +49,9 @@
 2.创建色彩和文本对齐工具类
 3.通用flex布局样式
 4.padding和margin通用样式
-5.首页导航和轮播图（vue-awesome-swiper）
+5.首页导航和轮播图（vue-awesome-swiper 3.1.3）
 6.使用精灵图片（sprite)/字体图片（iconfont）
 7.卡片组件(card)
 8.列表卡片组件（list-card nav swiper）
-9.首页新闻资讯
+9.首页新闻资讯、接口(dayjs 时间格式化)
+10.提取官网数据（ 在console中 $$('') 爬取数据，类似于css选择器)

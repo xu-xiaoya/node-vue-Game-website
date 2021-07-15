@@ -46,10 +46,19 @@ a {
 
 // font-size
 @each $sizeKey,$size in $font-sizes {
-    .font-#{$sizeKey} {
+    .fs-#{$sizeKey} {
         font-size: $size * $base-font-size;
     }
 }
+// text overflow
+.text-ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
 
 //height,weight
 .w-100 {

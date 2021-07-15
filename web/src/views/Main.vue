@@ -5,7 +5,7 @@
         <!-- flex-1：左边和右边不变，中间的占用剩余的空间 -->
         <div class = "px-2 flex-1">
             <div class = "text-white">魔兽世界</div>
-            <div class = "text-grey-1 font-xxs ">团队成就更多</div>
+            <div class = "text-grey-1 fs-xxs ">团队成就更多</div>
         </div>
         <button type = "button" class = "btn bg-primary">立即下载</button>
     </div>
