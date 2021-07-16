@@ -33,5 +33,5 @@ const schema = new mongoose.Schema({
     }]
 })
 
-// 导出mongoose的模型，在需要的地方引用
-module.exports = mongoose.model('Hero', schema);
+// 导出mongoose的模型，在需要的地方引用,第三个参数集合名
+module.exports = mongoose.model('Hero', schema, 'heroes');

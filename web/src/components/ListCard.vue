@@ -10,7 +10,8 @@
     <!-- end of nav -->
     <div class = "pt-3">
         <!-- 将swiper的真实索引值赋值给active -->
-        <swiper ref = "list" @slide-change = "() => active = $refs.list.swiper.realIndex">
+        <swiper ref = "list" :options = "{autoHeight:true}" 
+        @slide-change = "() => active = $refs.list.swiper.realIndex">
             <swiper-slide v-for = "(category,i) in categories" :key = "i">
                 <!-- 具名插槽，用name指定名字，对应Home.vue的内容 -->
                <slot name = "items" :category = "category"></slot>

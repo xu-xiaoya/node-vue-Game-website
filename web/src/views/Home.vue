@@ -71,18 +71,36 @@
     <my-list-card icon = "menu1" title = "新闻资讯" :categories= "newsCats">
       <!-- 对应ListCard具名插槽，只能在template使用v-slot-，v-slot:items简写：#items -->
       <template #items = "{category}">
-        <div class = "py-2 fs-lg d-flex" v-for = "(news,i) in category.newsList" :key = "i">
+        <router-link 
+        tag = "div"
+        :to = "`/articles/${news._id}`"
+        class = "py-2 fs-lg d-flex" v-for = "(news,i) in category.newsList" :key = "i">
           <span class = "text-primary">[{{news.categoryName}}]</span>
           <span class = "px-2"> | </span>
           <span class = "flex-1 text-dark-1 text-ellipsis pr-2">{{news.title}}</span>
           <!-- 过滤器： + ‘ | 过滤器名’ -->
           <span class = "text-grey-1">{{news.createdAt | date}}</span>
-        </div>
+        </router-link>
       </template>
       
     </my-list-card>
 
-    <my-card icon = "menu1" title = "英雄列表"></my-card>
+    <my-list-card icon = "card-hero" title = "职业列表" :categories= "heroCats">
+      <!-- 对应ListCard具名插槽，只能在template使用v-slot-，v-slot:items简写：#items -->
+      <template #items = "{category}">
+        <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">
+          <router-link class = "p-2 text-center"
+            style = "width: 25%;" 
+            tag = "div"
+            :to = "`/heroes/${hero._id}`" 
+            v-for = "(hero,i) in category.heroList" :key = "i">
+            <img style = "width: 100%; border-radius: 5px;" :src = "hero.avatar" alt = "">
+            <div>{{hero.name}}</div>
+          </router-link>
+        </div>
+      </template>
+      
+    </my-list-card>
     <my-card icon = "menu1" title = "精彩视频"></my-card>
     <my-card icon = "menu1" title = "图文攻略"></my-card>
 
@@ -122,17 +140,23 @@ export default {
           prevEl: ".swiper-button-prev"
         }
       },
-      newsCats:[]
+      newsCats:[],
+      heroCats:[]
     };
   },
   methods: {
     async fetchNewsCats() {
       const res = await this.$http.get('news/list');
       this.newsCats = res.data;
+    },
+    async fetchHeroCats() {
+      const res = await this.$http.get('heroes/list');
+      this.heroCats = res.data;
     }
   },
   created(){
     this.fetchNewsCats();
+    this.fetchHeroCats();
   },
   computed: {
     swiper() {
