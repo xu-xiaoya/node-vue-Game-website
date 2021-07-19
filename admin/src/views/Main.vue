@@ -19,8 +19,8 @@
                 <!-- 英雄管理 -->
                 <el-menu-item-group>
                   <template slot="title">职业</template>
-                  <el-menu-item index="/heros/create">新建职业</el-menu-item>
-                  <el-menu-item index="/heros/list">职业列表</el-menu-item>
+                  <el-menu-item index="/heroes/create">新建职业</el-menu-item>
+                  <el-menu-item index="/heroes/list">职业列表</el-menu-item>
                 </el-menu-item-group>
                 <!-- 文章管理 -->
                 <el-menu-item-group>

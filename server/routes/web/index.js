@@ -115,8 +115,9 @@ module.exports = app=>{
         res.send(cats);
     })
 
-    //导入英雄数据
+    //导入职业数据
     router.get('/heroes/init', async(req, res)=> {
+        await Hero.deleteMany({})
         const rawData = [ { "name":"热门", "heroes":[ { "name": "战士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt4da5b5373f7b0a5a/5ee3e48814a7bc718bab5fbc/WTZV6QLQWMGA1472462584161.jpg" }, { "name": "猎人", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt9e2a83286eabf5f9/5ee3e428a9170407eeb4b785/MFUHSBUXIVHC1472462567800.jpg" }, { "name": "牧师", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt62ba94268b5d70af/5ee78c19e35f99710ac7903f/DNYEIRWUCTD71472462578250.jpg" }, { "name": "法师", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt8c37ada81ee00f2d/5ee3e45cd217327180733d0f/1RZZ8SIGPF2A1472462568985.jpg" }, { "name": "武僧", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt1f67783c6ed852ec/5ee7942fe8f74907ecce02bb/XCAU21DM19PN1472462572837.jpg" }, { "name": "恶魔猎手", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte82b67d3cb4394e3/5ee79641fc5bec085f1e66b7/2M4W72FCP73P1472462563446.jpg" }, { "name": "圣骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt5b1703ed19bbdaef/5ee790bba7c560086afc41c7/B9O2ZMD5MTKZ1472462573678.jpg" }, { "name": "潜行者", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt0a85b15a150cc8e1/5ee3e4b8e8f74907ecce0130/BONY10RAWWMM1472462578823.jpg" }, { "name": "萨满祭司", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/bltfc7f6afbcd8c4581/5ee79291d217327180733e65/GMUE51XJ12H11472462580949.jpg" }, { "name": "术士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt0abcecf5fceb04a5/5ee3e8d9418a3c077bb23791/6KN3PGUVXI6D1472462570509.jpg" }, { "name": "德鲁伊", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte0e32d1d3f1f3b81/5ee3e3b214a7bc718bab5f86/3I1UGKCI6NIZ1472462563762.jpg" }, { "name": "死亡骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/bltd85783c07f6c1895/5ee3e3ea63a2d97093830791/0140N08APH7H1472462563120.jpg" }, ] }, { "name":"伤害输出", "heroes":[ { "name": "战士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt4da5b5373f7b0a5a/5ee3e48814a7bc718bab5fbc/WTZV6QLQWMGA1472462584161.jpg" }, { "name": "猎人", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt9e2a83286eabf5f9/5ee3e428a9170407eeb4b785/MFUHSBUXIVHC1472462567800.jpg" }, { "name": "牧师", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt62ba94268b5d70af/5ee78c19e35f99710ac7903f/DNYEIRWUCTD71472462578250.jpg" }, { "name": "法师", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt8c37ada81ee00f2d/5ee3e45cd217327180733d0f/1RZZ8SIGPF2A1472462568985.jpg" }, { "name": "武僧", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt1f67783c6ed852ec/5ee7942fe8f74907ecce02bb/XCAU21DM19PN1472462572837.jpg" }, { "name": "恶魔猎手", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte82b67d3cb4394e3/5ee79641fc5bec085f1e66b7/2M4W72FCP73P1472462563446.jpg" }, { "name": "圣骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt5b1703ed19bbdaef/5ee790bba7c560086afc41c7/B9O2ZMD5MTKZ1472462573678.jpg" }, { "name": "潜行者", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt0a85b15a150cc8e1/5ee3e4b8e8f74907ecce0130/BONY10RAWWMM1472462578823.jpg" }, { "name": "萨满祭司", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/bltfc7f6afbcd8c4581/5ee79291d217327180733e65/GMUE51XJ12H11472462580949.jpg" }, { "name": "术士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt0abcecf5fceb04a5/5ee3e8d9418a3c077bb23791/6KN3PGUVXI6D1472462570509.jpg" }, { "name": "德鲁伊", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte0e32d1d3f1f3b81/5ee3e3b214a7bc718bab5f86/3I1UGKCI6NIZ1472462563762.jpg" }, { "name": "死亡骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/bltd85783c07f6c1895/5ee3e3ea63a2d97093830791/0140N08APH7H1472462563120.jpg" }, ] }, { "name":"坦克", "heroes":[ { "name": "战士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt4da5b5373f7b0a5a/5ee3e48814a7bc718bab5fbc/WTZV6QLQWMGA1472462584161.jpg" }, { "name": "武僧", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt1f67783c6ed852ec/5ee7942fe8f74907ecce02bb/XCAU21DM19PN1472462572837.jpg" }, { "name": "恶魔猎手", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte82b67d3cb4394e3/5ee79641fc5bec085f1e66b7/2M4W72FCP73P1472462563446.jpg" }, { "name": "圣骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt5b1703ed19bbdaef/5ee790bba7c560086afc41c7/B9O2ZMD5MTKZ1472462573678.jpg" }, { "name": "德鲁伊", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte0e32d1d3f1f3b81/5ee3e3b214a7bc718bab5f86/3I1UGKCI6NIZ1472462563762.jpg" }, { "name": "死亡骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/bltd85783c07f6c1895/5ee3e3ea63a2d97093830791/0140N08APH7H1472462563120.jpg" }, ] }, { "name":"治疗者", "heroes":[ { "name": "牧师", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt62ba94268b5d70af/5ee78c19e35f99710ac7903f/DNYEIRWUCTD71472462578250.jpg" }, { "name": "武僧", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt1f67783c6ed852ec/5ee7942fe8f74907ecce02bb/XCAU21DM19PN1472462572837.jpg" }, { "name": "圣骑士", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blt5b1703ed19bbdaef/5ee790bba7c560086afc41c7/B9O2ZMD5MTKZ1472462573678.jpg" }, { "name": "萨满祭司", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/bltfc7f6afbcd8c4581/5ee79291d217327180733e65/GMUE51XJ12H11472462580949.jpg" }, { "name": "德鲁伊", "avatar": "https://contentstack-images.cnc.blzstatic.cn/v3/assets/blt3452e3b114fab0cd/blte0e32d1d3f1f3b81/5ee3e3b214a7bc718bab5f86/3I1UGKCI6NIZ1472462563762.jpg" } ] } ]
         for (let cat of rawData) {
             if (cat.name === '热门') {
@@ -128,7 +129,7 @@ module.exports = app=>{
                 name: cat.name
             })
             // hero表示heroes里的每一行数据
-            cat.heroes.map(hero => {
+            cat.heroes = cat.heroes.map(hero => {
                 // 解构
                 hero.categories = [category];
                 return hero;
@@ -162,9 +163,8 @@ module.exports = app=>{
             },
         ])
             
-        // 新闻公告活动赛事四个分类的id
         const subCats = cats.map(v => v._id);
-        // 在头部添加一个热门板块
+        // 在头部添加一个热门
         cats.unshift({
             name: '热门',
             heroList: await Hero.find().where({
@@ -186,5 +186,14 @@ module.exports = app=>{
         }).limit(2);
         res.send(data);
     })
+    app.use('/web/api', router);
+
+    // 职业详情
+    router.get('/heroes/:id', async(req,res) => {
+        const data = await Hero.findById(req.params.id).lean();
+        res.send(data);
+    })
+
+
     app.use('/web/api', router);
 }

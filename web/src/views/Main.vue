@@ -12,7 +12,7 @@
     <div class = "bg-primary pt-3 pb-2">
         <div class = "nav nav-inverse pb-1 jc-around">
             <div class = "nav-item active">
-                <router-link class="nav-link  " tag = "div"  :to="{name:'/'}">首页</router-link>
+                <router-link class="nav-link  " tag = "div"  :to="{name:'main'}">首页</router-link>
             </div>
             <div class = "nav-item">
                 <router-link class="nav-link" tag = "div" :to="{name:'/'}">攻略</router-link>

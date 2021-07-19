@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     name:{type: String},
     avatar:{type: String},
+    banner:{type:String},
     title:{type: String},
     // 多个分类
     categories: [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],
