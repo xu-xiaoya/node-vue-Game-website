@@ -163,7 +163,15 @@
                             v-for = "(item,i) in model.partners" 
                             :key = "i">
                             <el-form-item label = "职业">
-                                <el-select v-model = "item.hero"></el-select>
+                                <el-select  filterable v-model = "item.hero">
+                                    <el-option 
+                                    v-for = "hero of heroes" 
+                                    :key = "hero._id"
+                                    :value = "hero._id"
+                                    :label = "hero.name">
+
+                                    </el-option>
+                                </el-select>
                             </el-form-item>
                             <el-form-item label = "描述">
                                 <el-input v-model = "item.description" type = "textarea"></el-input>
@@ -200,6 +208,7 @@ export default {
         return {
             items:[],
             categories:[],
+            heroes:[],
             model: {
                 name: "",
                 avatar: "",
@@ -242,11 +251,16 @@ export default {
         async fetchItems() {
             const res = await this.$http.get(`rest/items`);
             this.items = res.data;
+        },
+        async fetchHeroes() {
+            const res = await this.$http.get(`rest/heroes`);
+            this.heroes = res.data;
         }
     },
     created() {
         this.id && this.fetch();
         this.fetchItems();
+        this.fetchHeroes();
         this.fetchCategories();
     }
 }

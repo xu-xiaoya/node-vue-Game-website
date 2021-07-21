@@ -21,6 +21,10 @@ Vue.prototype.$http = axios.create({
   baseURL:'http://localhost:3000/web/api'
 })
 
+// router-link跳转回到页面顶部
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0);
+})
 
 new Vue({
   router,

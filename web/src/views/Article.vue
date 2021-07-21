@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div v-html = "model.body" class = "px-3 body fs-lg"></div>
+    <div v-html = "model.body" class = "px-3 body fs-lg "></div>
     <div class = "px-3 border-top py-3">
       <div class = "d-flex ai-center">
         <i class = "iconfont icon-new"></i>
