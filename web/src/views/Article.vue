@@ -2,15 +2,20 @@
   <div class="page-article" v-if = "model">
     <div class = "d-flex py-3 px-2 border-bottom">
       <div class = "iconfont icon-back text-blue" style = "font-size: 9px;"></div>
-      <strong class = "flex-1 text-blue">
-        {{model.title}}
-      </strong>
+      
+      <router-link
+        class = "flex-1 text-blue"
+        tag = "div" 
+        to = "/">
+         <strong>{{model.title}}</strong>
+      </router-link>
+      
       <div class = "text-grey fs-xs">
         2021/07/16
       </div>
     </div>
 
-    <div v-html = "model.body" class = "px-3 body fs-lg "></div>
+    <div v-html = "model.body" class = "px-3 body fs-lg"></div>
     <div class = "px-3 border-top py-3">
       <div class = "d-flex ai-center">
         <i class = "iconfont icon-new"></i>

@@ -15,10 +15,10 @@
                 <router-link class="nav-link  " tag = "div"  to="/">首页</router-link>
             </div>
             <div class = "nav-item">
-                <router-link class="nav-link" tag = "div" :to="{name:'/'}">攻略</router-link>
+                <router-link class="nav-link" tag = "div" to="/">攻略</router-link>
             </div>
             <div class = "nav-item">
-                <router-link class="nav-link" tag = "div" :to="{name:'/'}">赛事中心</router-link>
+                <router-link class="nav-link" tag = "div" to="/">赛事中心</router-link>
             </div>
         </div>
     </div>
