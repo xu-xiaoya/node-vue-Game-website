@@ -13,8 +13,8 @@
                 <!-- 物品管理 -->
                 <el-menu-item-group>
                   <template slot="title">天赋</template>
-                  <el-menu-item index="/items/create">新建天赋</el-menu-item>
-                  <el-menu-item index="/items/list">天赋列表</el-menu-item>
+                  <el-menu-item index="/items/create">新建专精</el-menu-item>
+                  <el-menu-item index="/items/list">专精列表</el-menu-item>
                 </el-menu-item-group>
                 <!-- 英雄管理 -->
                 <el-menu-item-group>
