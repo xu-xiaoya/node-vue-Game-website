@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1625905187342') format('truetype');
+  src: url('iconfont.ttf?t=1627542909974') format('truetype');
 }
 
 .iconfont {
@@ -15,8 +15,32 @@
   content: "\e67c";
 }
 
+.icon-jineng:before {
+  content: "\e682";
+}
+
 .icon-card-hero:before {
   content: "\e61f";
+}
+
+.icon-shipin:before {
+  content: "\e63d";
+}
+
+.icon-qa:before {
+  content: "\e501";
+}
+
+.icon-guanxi:before {
+  content: "\e6a8";
+}
+
+.icon-wuqiku:before {
+  content: "\e502";
+}
+
+.icon-duikang:before {
+  content: "\e6f8";
 }
 
 .icon-back:before {
@@ -29,5 +53,9 @@
 
 .icon-new:before {
   content: "\e94e";
+}
+
+.icon-tedian:before {
+  content: "\e643";
 }
 

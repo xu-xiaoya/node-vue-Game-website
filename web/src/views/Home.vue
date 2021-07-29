@@ -68,7 +68,7 @@
         </swiper>
       </div>
     </my-card> -->
-    <my-list-card icon = "menu1" title = "新闻资讯" :categories= "newsCats">
+    <my-list-card icon = "new" title = "新闻资讯" :categories= "newsCats">
       <!-- 对应ListCard具名插槽，只能在template使用v-slot-，v-slot:items简写：#items -->
       <template #items = "{category}">
         <router-link 
@@ -86,7 +86,7 @@
     </my-list-card>
 
     <my-list-card icon = "card-hero" title = "职业列表" :categories= "heroCats">
-      <!-- 对应ListCard具名插槽，只能在template使用v-slot-，v-slot:items简写：#items -->
+      <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
       <template #items = "{category}">
         <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">
           <router-link class = "p-2 text-center"
@@ -101,8 +101,8 @@
       </template>
       
     </my-list-card>
-    <my-card icon = "menu1" title = "精彩视频"></my-card>
-    <my-card icon = "menu1" title = "图文攻略"></my-card>
+    <my-card icon = "shipin" title = "精彩视频"></my-card>
+    <my-card icon = "qa" title = "图文攻略"></my-card>
 
 
   </div>

@@ -6,29 +6,28 @@ const schema = new mongoose.Schema({
     avatar:{type: String},
     banner:{type:String},
     title:{type: String},
+
     // 多个分类
     categories: [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],
-    scores:{
+    scores:{    //分数
         difficult:{type:Number},
         skills:{type:Number},
         attack:{type:Number},
         survive:{type:Number},
     },
-    skills:[{
+    features:[{   //特点
         icon:{type:String},
         name:{type:String},
         description:{type:String},
-        tips:{type:String},
     }],
 
     items1:[{type:mongoose.SchemaTypes.ObjectId, ref:'Item'}],
-    items2:[{type:mongoose.SchemaTypes.ObjectId, ref:'Item'}],
     
-    usageTips:{type:String},
+    description:{type:String},
     battleTips:{type:String},
-    teamTips:{type:String},
+    tools:{type:String},
     
-    partners:[{
+    partners:[{  //搭档
         hero:{type:mongoose.SchemaTypes.ObjectId, ref:'Hero'},
         description:{type:String},
     }]

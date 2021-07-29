@@ -35,8 +35,9 @@
       </div>
     </div>  
     <!-- end of top -->
+
     <div>
-      <div class = " bg-white px-3">
+      <!-- <div class = " bg-white px-3">
         <div class = "nav d-flex pt-3 pb-2 jc-around border-bottom">
           <div class = "nav-item active">
             <div class = "nav-link">职业介绍</div>
@@ -45,11 +46,31 @@
             <div class = "nav-link">进阶攻略</div>
           </div>
         </div>
+      </div> -->
+
+      <div class = " bg-white px-3">
+        <div class = "nav d-flex pt-3 pb-2 jc-around border-bottom">
+          <div class = "nav-item" :class = "{active: active === 0}"
+          @click = "$refs.list.swiper.slideTo(0); active=0;">
+            <div class = "nav-link">职业介绍</div>
+          </div>
+          <div class = "nav-item" :class = "{active: active === 1}"
+          @click = "$refs.list.swiper.slideTo(1); active=1;">
+            <div class = "nav-link">进阶攻略</div>
+          </div>
+        </div>
       </div>
-      <swiper>
+
+
+      <swiper ref = "list" :options = "{autoHeight:true}" 
+      @slide-change = "() => active = $refs.list.swiper.realIndex">
         <swiper-slide>
           <div>
             <div class = "p-3 bg-white border-bottom">
+
+              <div class = "m-2">{{model.description}}</div>
+              <br>
+
               <div class ="d-flex">
                 <router-link tag = "button" to = "/" class = "btn btn-lg flex-1">
                   <i class = "iconfont icon-menu1"></i>
@@ -61,7 +82,10 @@
                 </router-link>
               </div>
 
-              <!-- skills -->
+            </div>
+            
+            <!-- features -->
+            <my-card plain icon = "tedian" title = "特点">
               <div class = "skills bg-white mt-4">
                 <div class = "d-flex jc-around">
                   <img
@@ -69,24 +93,21 @@
                   @click = "currentSkillIndex = i"
                   :class = "currentSkillIndex === i?'active': ''" 
                   :src = "item.icon" 
-                  v-for = "(item,i) in model.skills" 
+                  v-for = "(item,i) in model.features" 
                   :key = "item.name"
                   >
                 </div>
                 <div v-if = "currentSkill">
-                  <div class = "py-4">
+                  <div class = "py-4 text-center">
                     <h3 class = "m-0">{{currentSkill.name}}</h3>
                   </div>
                   <p>{{currentSkill.description}}</p>
                   <div class = "border-bottom"></div>
-                  <p class = "text-grey-1">小提示：{{currentSkill.tips}}</p>
                 </div>
               </div>
+            </my-card>
 
-            </div>
-
-            <my-card plain icon ="menu1" title = "出装推荐" class = "hero-items">
-              <div class = "fs-xl">顺风出装</div>
+            <my-card plain icon ="jineng" title = "专精" class = "hero-items">
               <div class = "d-flex jc-around text-center mt-3">
                 <div v-for = "item in model.items1" :key = "item.name">
                   <img :src = "item.icon" class = "icon">
@@ -95,33 +116,41 @@
               </div>
             </my-card>
             
-            <my-card plain icon ="menu1" title = "使用技巧">
-              <div class = "m-0">{{model.usageTips}}</div>
-            </my-card>
-            <my-card plain icon ="menu1" title = "对抗技巧">
+            
+
+            
+
+          </div>
+        </swiper-slide>
+
+        <swiper-slide>
+          <div>
+            <my-card plain icon ="duikang" title = "对抗技巧">
               <div class = "m-0">{{model.battleTips}}</div>
             </my-card>
-            <my-card plain icon ="menu1" title = "团战思路">
-              <div class = "m-0">{{model.teamTips}}</div>
+            <my-card plain icon ="wuqiku" title = "使用武器">
+              <div class = "m-0">{{model.tools}}</div>
             </my-card>
 
-            <my-card plain icon ="menu1" title = "英雄关系">
+            <my-card plain icon ="guanxi" title = "英雄关系">
               <div class = "fs-xl">最佳搭档</div>
               <div 
               v-for = "item in model.partners" 
               :key = "item.name"
               class = "d-flex pt-3">
                 <img :src = "item.hero.avatar" alt = "" height="50px">
-                <p class = "flex-1m-0  ml-3">
-                  {{item.description}}
+                <p class = "flex-1 ml-2">
+                  <strong>{{item.hero.name}}：</strong>{{item.description}}
                 </p>
+
+                
               </div>
               <div class = "border-bottom mt-2"></div>
             </my-card>
 
           </div>
         </swiper-slide>
-        <swiper-slide></swiper-slide>
+        
       </swiper>
     </div>
     
@@ -135,13 +164,15 @@ export default {
   data() {
     return {
       model:null,
-      currentSkillIndex:0
+      currentSkillIndex:0,
+      // nav切换
+      active:0,
     }
   },
   computed:{
     currentSkill() {
-      return this.model.skills[this.currentSkillIndex]
-    }
+      return this.model.features[this.currentSkillIndex];
+    },
   },
   methods: {
     async fetch() {
@@ -151,7 +182,7 @@ export default {
   },
   created() {
     this.fetch();
-  }
+  },
 }
 </script>
 <style>

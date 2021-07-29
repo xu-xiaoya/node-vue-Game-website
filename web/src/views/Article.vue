@@ -11,11 +11,12 @@
       </router-link>
       
       <div class = "text-grey fs-xs">
-        2021/07/16
+        {{model.createdAt | date}}
       </div>
     </div>
 
     <div v-html = "model.body" class = "px-3 body fs-lg"></div>
+
     <div class = "px-3 border-top py-3">
       <div class = "d-flex ai-center">
         <i class = "iconfont icon-new"></i>
@@ -31,11 +32,13 @@
         </router-link>
       </div>
     </div>
+
   </div>
 </template>
 
 
 <script>
+import dayjs from 'dayjs';
 export default {
   props: {
     id: { required:true }
@@ -43,6 +46,11 @@ export default {
   data() {
     return {
       model:null
+    }
+  },
+  filters: {
+    date(val) {
+      return dayjs(val).format('MM/DD');
     }
   },
   watch: {

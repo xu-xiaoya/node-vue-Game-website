@@ -13,11 +13,53 @@
       "unicode_decimal": 59004
     },
     {
+      "icon_id": "2753388",
+      "name": "技能",
+      "font_class": "jineng",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
       "icon_id": "6654507",
       "name": "card-hero",
       "font_class": "card-hero",
       "unicode": "e61f",
       "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "11021185",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "11057255",
+      "name": "攻略",
+      "font_class": "qa",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "13603068",
+      "name": "关系",
+      "font_class": "guanxi",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "16681424",
+      "name": "武器库",
+      "font_class": "wuqiku",
+      "unicode": "e502",
+      "unicode_decimal": 58626
+    },
+    {
+      "icon_id": "16805944",
+      "name": "对抗",
+      "font_class": "duikang",
+      "unicode": "e6f8",
+      "unicode_decimal": 59128
     },
     {
       "icon_id": "16913278",
@@ -39,6 +81,13 @@
       "font_class": "new",
       "unicode": "e94e",
       "unicode_decimal": 59726
+    },
+    {
+      "icon_id": "21101228",
+      "name": "特点",
+      "font_class": "tedian",
+      "unicode": "e643",
+      "unicode_decimal": 58947
     }
   ]
 }
