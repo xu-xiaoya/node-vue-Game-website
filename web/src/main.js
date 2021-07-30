@@ -11,10 +11,12 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import "swiper/dist/css/swiper.css";
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 
+
 import Card from './components/Card.vue'
 Vue.component('my-card', Card);
 import ListCard from './components/ListCard.vue'
 Vue.component('my-list-card', ListCard);
+
 
 import axios from 'axios';
 Vue.prototype.$http = axios.create({

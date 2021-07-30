@@ -30,8 +30,10 @@ const schema = new mongoose.Schema({
     partners:[{  //搭档
         hero:{type:mongoose.SchemaTypes.ObjectId, ref:'Hero'},
         description:{type:String},
-    }]
+    }],
+
+    video:{type:String},
 })
 
-// 导出mongoose的模型，在需要的地方引用,第三个参数集合名
+// 导出mongoose的模型，在需要的地方引用,第三个参0;;;;;;0;;;;0;0000000;000;;数集合名
 module.exports = mongoose.model('Hero', schema, 'heroes');

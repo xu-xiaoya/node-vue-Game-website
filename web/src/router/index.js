@@ -3,8 +3,8 @@ import VueRouter from 'vue-router'
 
 import Main from '../views/Main.vue'
 import Home from '../views/Home.vue'
-import Article from '../views/Article.vue'
-import Hero from '../views/Hero.vue'
+// import Article from '../views/Article.vue'
+// import Hero from '../views/Hero.vue'
 
 Vue.use(VueRouter)
 
@@ -12,29 +12,41 @@ const routes = [
   {
     path: '/',
     component: Main,
+    redirect: '/home',
     children:[
       {path:'/', name:'home', component:Home },
-      {path:'/articles/:id', name:'article', component:Article , props:true},
+      {
+        path:'/articles/:id', 
+        name:'article', 
+        props:true,
+        component:()=>import('../views/Article.vue'),
+      },
     ]
   },
   {
     path: '/heroes/:id',
     name:'hero',
-    component: Hero,
-    props:true
+    props:true,
+    component: () => import('../views/Hero.vue'),
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  // 路由改变时滚动到顶部，而返回上一级时滚动到之前位置
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
+
+// 禁止相同路由跳转时打印错误信息
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 export default router

@@ -11,11 +11,15 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
+    "flv.js": "^1.6.1",
     "node-sass": "^6.0.1",
     "scss": "^0.2.4",
     "scss-loader": "0.0.1",
+    "video.js": "^7.14.3",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",

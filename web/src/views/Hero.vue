@@ -116,15 +116,20 @@
               </div>
             </my-card>
             
-            
-
-            
-
           </div>
         </swiper-slide>
 
         <swiper-slide>
           <div>
+            <my-card plain icon ="shipin" title = "视频介绍">
+              <div>
+                
+                <iframe :src="model.video" scrolling="no" border="0" 
+                frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+              </div>
+
+            </my-card>
+
             <my-card plain icon ="duikang" title = "对抗技巧">
               <div class = "m-0">{{model.battleTips}}</div>
             </my-card>

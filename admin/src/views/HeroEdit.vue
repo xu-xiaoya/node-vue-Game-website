@@ -90,6 +90,9 @@
                     <el-form-item label = "描述">
                         <el-input  type = "textarea" v-model = "model.description"></el-input>
                     </el-form-item>
+                    <el-form-item label = "介绍视频链接">
+                        <el-input v-model = "model.video"></el-input>
+                    </el-form-item>
                     <el-form-item label = "对抗技巧">
                         <el-input  type = "textarea" v-model = "model.battleTips"></el-input>
                     </el-form-item>
@@ -219,7 +222,7 @@ export default {
                 res = await this.$http.post('rest/heroes', this.model);
             }
             // 跳转到list页面
-            // this.$router.push('/heroes/list');
+            this.$router.push('/heroes/list');
             this.$message({
                 type:'success',
                 message:'保存成功'
