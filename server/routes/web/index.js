@@ -176,6 +176,35 @@ module.exports = app=>{
         res.send(cats);
     })
 
+    //职业列表页面接口 
+    router.get('/heroes/listTwo', async(req, res) =>  {
+        let { heroType } = req.query
+        console.log(heroType)
+        // 返回的英雄数据
+        let heroList = []
+    
+        if (heroType === '全部') {
+          heroList = await Hero.find()
+        } else {
+          // 先把对应分类信息查出来
+          const category = await Category.findOne().where({ name: heroType })
+          // 根据分类的id取查找对应文章
+          heroList = await Hero.find().where({
+            categories: { $in: [category._id] }
+          })
+        }
+    
+        res.send(heroList);
+    })
+
+    //职业列表页面分类 
+    router.get('/heroes/cate', async(req, res) =>  {
+        const cate = await Category.find()
+        .where({ parent: '60ed4d5cdc2a8f37a98b9eab' }).lean()
+        cate.unshift({ name: '全部' })
+        res.send(cate);
+    })
+
     // 文章详情
     router.get('/articles/:id',async(req,res) => {
         const data = await Article.findById(req.params.id).lean();
