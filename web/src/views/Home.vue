@@ -117,11 +117,7 @@
     </my-list-card>
 
     <my-list-card icon = "card-hero" title = "职业列表" :categories= "heroCats">
-      <template v-slot:banner>
-        <div class="banner mt-2">
-          <img src="../assets/img/banner/德鲁伊.jpg" class="news-hero" alt="new_hero">
-        </div>
-      </template>
+      
       <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
       <template #items = "{category}">
         <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">
@@ -129,7 +125,9 @@
             style = "width: 25%;" 
             tag = "div"
             :to = "`/heroes/${hero._id}`" 
-            v-for = "(hero,i) in category.heroList" :key = "i">
+            v-for = "(hero,i) in category.heroList" 
+            :key = "i"
+          >
             <img style = "width: 100%; height:75px; border-radius: 5px;" :src = "hero.avatar" alt = "">
             <div>{{hero.name}}</div>
           </router-link>
