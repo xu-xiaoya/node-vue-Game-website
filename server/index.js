@@ -9,7 +9,8 @@ app.use(express.json());
 // 静态文件路由
 app.use('/uploads', express.static(__dirname+'/uploads'));
 
-require('./routes/admin')(app);
+require('./routes/admin/index1')(app);
+require('./routes/admin/index')(app);
 require('./plugins/db')(app);
 require('./routes/web')(app);
 

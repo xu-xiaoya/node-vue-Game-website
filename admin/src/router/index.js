@@ -4,18 +4,6 @@ import VueRouter from 'vue-router'
 import Login from "../views/Login.vue"
 
 import Main from '../views/Main.vue'
-import CategoryEdit from "../views/CategoryEdit.vue"
-import CategoryList from "../views/CategoryList.vue"
-import ItemEdit from "../views/ItemEdit.vue"
-import ItemList from "../views/ItemList.vue"
-import HeroEdit from "../views/HeroEdit.vue"
-import HeroList from "../views/HeroList.vue"
-import ArticleEdit from "../views/ArticleEdit.vue"
-import ArticleList from "../views/ArticleList.vue"
-import AdEdit from "../views/AdEdit.vue"
-import AdList from "../views/AdList.vue"
-import AdminUserEdit from "../views/AdminUserEdit.vue"
-import AdminUserList from "../views/AdminUserList.vue"
 
 Vue.use(VueRouter)
 
@@ -30,31 +18,109 @@ const routes = [
     path: '/',
     name: 'main',
     component: Main,
+    redirect: '/home',
     children:[
-      {path:'/categories/create', component: CategoryEdit},
+      {
+        path:'/home',
+        component: ()=>import("../views/Home.vue")
+      },
+
+      // category
       // props:true 代表可以把id传入到CategoryEdit组件中 =》 应在CategoryEdit组件中写props接收参数id！
-      {path:'/categories/edit/:id', component: CategoryEdit, props:true},
-      {path:'/categories/list', component: CategoryList},
+      {
+        path:'/categories/create', 
+        component: ()=>import("../views/CategoryEdit.vue")
+      },
+      {
+        path:'/categories/edit/:id', 
+        props:true,
+        component: ()=>import("../views/CategoryEdit.vue")
+      },
+      {
+        path:'/categories/list', 
+        component: ()=>import("../views/CategoryList.vue")
+      },
+
+
+      // item
+      {
+        path:'/items/create', 
+        component: ()=>import("../views/ItemEdit.vue")
+      },
+      {
+        path:'/items/edit/:id', 
+        props:true,
+        component: ()=>import("../views/ItemEdit.vue"),
+      },
+      {
+        path:'/items/list', 
+        component: ()=>import("../views/ItemList.vue")
+      },
+
+
+      // hero
+      {
+        path:'/heroes/create', 
+        component: ()=>import("../views/HeroEdit.vue")
+      },
+      {
+        path:'/heroes/edit/:id', 
+        props:true,
+        component: ()=>import("../views/HeroEdit.vue"), 
+      },
+      {
+        path:'/heroes/list', 
+        component: ()=>import("../views/HeroList.vue")
+      },
+
+
+      //article 
+      {
+        path:'/articles/create', 
+        component: ()=>import("../views/ArticleEdit.vue")
+      },
+      {
+        path:'/articles/edit/:id', 
+        props:true,
+        component: ()=>import("../views/ArticleEdit.vue"), 
+      },
+      {
+        path:'/articles/list', 
+        component: ()=>import("../views/ArticleList.vue")
+      },
       
-      {path:'/items/create', component: ItemEdit},
-      {path:'/items/edit/:id', component: ItemEdit, props:true},
-      {path:'/items/list', component: ItemList},
+      
+      //ad 
+      {
+        path:'/ads/create', 
+        component: ()=>import("../views/AdEdit.vue")
+      },
+      {
+        path:'/ads/edit/:id', 
+        props:true,
+        component: ()=>import("../views/AdEdit.vue"), 
+      },
+      {
+        path:'/ads/list', 
+        component: ()=>import("../views/AdList.vue")
+      },
 
-      {path:'/heroes/create', component: HeroEdit},
-      {path:'/heroes/edit/:id', component: HeroEdit, props:true},
-      {path:'/heroes/list', component: HeroList},
 
-      {path:'/articles/create', component: ArticleEdit},
-      {path:'/articles/edit/:id', component: ArticleEdit, props:true},
-      {path:'/articles/list', component: ArticleList},
-
-      {path:'/ads/create', component: AdEdit},
-      {path:'/ads/edit/:id', component: AdEdit, props:true},
-      {path:'/ads/list', component: AdList},
-
-      {path:'/admin_users/create', component: AdminUserEdit},
-      {path:'/admin_users/edit/:id', component: AdminUserEdit, props:true},
-      {path:'/admin_users/list', component: AdminUserList}
+      // admin
+      {
+        path:'/admin_users/create', 
+        component: ()=>import("../views/AdminUserEdit.vue")
+      },
+      {
+        path:'/admin_users/edit/:id', 
+        props:true,
+        component: ()=>import("../views/AdminUserEdit.vue"), 
+        
+      },
+      {
+        path:'/admin_users/list', 
+        component: ()=>import("../views/AdminUserList.vue")
+      }
     ]
   }
   

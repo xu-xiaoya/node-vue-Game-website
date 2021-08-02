@@ -42,6 +42,7 @@ module.exports = app => {
         const model = await  req.Model.findById(req.params.id);
         res.send(model);
     })
+
     
     // 封装登陆校验中间件
     const authMiddleware = require('../../middleware/auth');
@@ -55,7 +56,6 @@ module.exports = app => {
     app.use('/admin/api/rest/:resource', 
         authMiddleware(), resourceMiddleware(), router);
 
-
     const multer = require('multer');
     // 文件传到的地址
     const upload = multer({dest: __dirname+'/../../uploads'})
@@ -66,6 +66,8 @@ module.exports = app => {
         res.send(file);
     })  
 
+
+    
 
 
     app.post('/admin/api/login', async(req, res)=>{
@@ -101,4 +103,6 @@ module.exports = app => {
             message:err.message
         })
     })
+
+    
 }

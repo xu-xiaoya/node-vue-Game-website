@@ -1,5 +1,17 @@
 <template>
     <div>
+        <el-card>
+            <div class = "d-flex">
+                <div class = "flex-1">
+                    <i class="el-icon-document"></i>
+                    <span class="title">数据列表</span>
+                </div>
+                <div>
+                    <el-button size="small" @click="$router.push('/ads/create')">添加</el-button>
+                </div>
+            </div>    
+        </el-card>
+
         <h1>广告位列表</h1>
         <el-table :data="items">
             <el-table-column prop="_id" label="ID" width="220"></el-table-column>

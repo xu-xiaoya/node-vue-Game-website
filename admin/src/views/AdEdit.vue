@@ -7,7 +7,7 @@
             </el-form-item>
 
             <el-form-item label = "广告">
-                <el-button size = "small" @click = "model.items.push({})">
+                <el-button size = "small" @click = "addAd">
                     <i class = "el-icon-plus"></i>添加广告
                 </el-button>
                 <el-row type = "flex" style = "flex-wrap:wrap">
@@ -16,9 +16,9 @@
                         :key = "i">
                         <el-divider></el-divider>
                         <el-form-item label = "跳转链接（URL)">
-                            <el-input v-model = "item.url"></el-input>
+                            <el-input v-model = "item.url" placeholder="请输入图片跳转链接"></el-input>
                         </el-form-item>
-                        <el-form-item label = "图片" style="margin-top: 0.5rem;">
+                        <el-form-item label = "广告图" style="margin-top: 0.5rem;">
                             <el-upload
                                 class="avatar-uploader"
                                 :action="uploadURl"
@@ -32,10 +32,7 @@
                         </el-form-item>
     
                         <el-form-item>
-                            <el-button 
-                                size = "small" 
-                                type = "danger"
-                                @click = "model.items.splice(i,1)"
+                            <el-button size = "small" type = "danger" @click = "delAd(i)"
                             >删除</el-button>
                         </el-form-item>
                     </el-col>
@@ -67,7 +64,11 @@ export default {
     methods: {
         async save() {
             // console.log('save');
-            
+            if (!this.model.name) {   
+                this.$message.error('广告位名称不能为空')
+                return
+            }
+            //根据id判断是新建还是编辑
             let res;
             if (this.id) {
                 // 在使用${}使用变量时，要使用``模板字符串
@@ -80,6 +81,25 @@ export default {
             this.$message({
                 type:'success',
                 message:'保存成功'
+            });
+        },
+        // 添加一个广告项
+        addAd () {
+            this.model.items.push({
+            image: '',
+            url: ''
+            })
+        },
+        // 删除一个广告项
+        delAd (index) {
+            this.$confirm(`确认要删除该广告项?`, '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                // 先前端删除数据，点保存时再提交
+                this.model.items.splice(index, 1)
+                this.$message.success('删除成功')
             })
         },
         async fetch() {

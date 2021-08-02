@@ -139,17 +139,17 @@
 
             <my-card plain icon ="guanxi" title = "英雄关系">
               <div class = "fs-xl">最佳搭档</div>
-              <div 
+              <router-link 
+              :to = "`/heroes/${item.hero._id}`"
               v-for = "item in model.partners" 
-              :key = "item.name"
+              :key = "item._id"
               class = "d-flex pt-3">
                 <img :src = "item.hero.avatar" alt = "" height="50px">
                 <p class = "flex-1 ml-2">
                   <strong>{{item.hero.name}}：</strong>{{item.description}}
-                </p>
+                </p>  
+              </router-link>
 
-                
-              </div>
               <div class = "border-bottom mt-2"></div>
             </my-card>
 
@@ -173,6 +173,13 @@ export default {
       // nav切换
       active:0,
     }
+  },
+  // 监视id变化并更新页面
+  watch: {
+    id: 'fetch'
+    // id () {
+    //   this.fetch();
+    // }
   },
   computed:{
     currentSkill() {

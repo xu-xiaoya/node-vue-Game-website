@@ -6,7 +6,8 @@
 3.web游戏官网前端
 
 二、管理后台
-1.基于ElementUI搭建基本后台界面
+A.基于ElementUI搭建基本后台界面
+ (1)Home界面 echarts图表
 
 1.创建分类
 2.分类列表
@@ -44,7 +45,7 @@
 20.客户端路由限制
 
 三、移动端网站
-使用scss预编译器
+使用scss预编译器 (npm i -D sass sass-loader@8.x)
 1.样式重置(*,html,body,a……)
 2.创建色彩和文本对齐工具类
 3.通用flex布局样式
