@@ -117,7 +117,11 @@
     </my-list-card>
 
     <my-list-card icon = "card-hero" title = "职业列表" :categories= "heroCats">
-      
+      <template v-slot:banner>
+        <div class="banner">
+          <img src="../assets/img/banner/德鲁伊.jpg" class="news-hero" alt="new_hero" style = "width: 100%;height: 150px;">
+        </div>
+      </template>
       <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
       <template #items = "{category}">
         <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">

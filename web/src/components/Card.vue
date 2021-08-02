@@ -8,6 +8,7 @@
         </div>
         <i class="iconfont icon-menu" v-if="!plain" @click = "showMore()"></i>
       </div>
+      <slot name="banner"></slot>
       <div class="card-body pt-3">
         <slot></slot>
       </div>

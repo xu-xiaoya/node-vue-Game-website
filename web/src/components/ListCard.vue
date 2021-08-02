@@ -1,9 +1,8 @@
 <template>
 <my-card :icon = "icon" :title = "title">
-    <!-- <template v-slot:banner>
+    <template v-slot:banner>
         <slot name="banner"></slot>
     </template> 
-     v-slot:content-->
 
     <template>
         <!-- 分类导航 -->
