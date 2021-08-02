@@ -1,6 +1,8 @@
 <template>
 <my-card :icon = "icon" :title = "title">
-    
+    <template v-slot:banner>
+        <slot name="banner"></slot>
+    </template>
     <div class = "nav jc-between">
         <div class = "nav-item" :class = "{active: active === i}"
        v-for = "(category,i) in categories" :key = "i"

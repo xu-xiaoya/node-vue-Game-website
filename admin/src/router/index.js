@@ -105,6 +105,21 @@ const routes = [
         component: ()=>import("../views/AdList.vue")
       },
 
+      //video
+      {
+        path:'/videos/create', 
+        component: ()=>import("../views/VideoEdit.vue")
+      },
+      {
+        path:'/videos/edit/:id', 
+        props:true,
+        component: ()=>import("../views/VideoEdit.vue"), 
+      },
+      {
+        path:'/videos/list', 
+        component: ()=>import("../views/VideoList.vue")
+      },
+
 
       // admin
       {

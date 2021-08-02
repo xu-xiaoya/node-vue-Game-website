@@ -15,8 +15,8 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item label = "名称">
-                <el-input v-model = "model.name"></el-input>
+            <el-form-item label = "分类名称">
+                <el-input v-model = "model.name" placeholder="请输入分类名称"></el-input>
             </el-form-item>
             
             <el-form-item>

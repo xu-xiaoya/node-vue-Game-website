@@ -21,6 +21,13 @@ const routes = [
         props:true,
         component:()=>import('../views/Article.vue'),
       },
+      {
+        path:'/videos/:id', 
+        name:'video', 
+        props:true,
+        component:()=>import('../views/Video.vue'),
+      },
+      
     ]
   },
   {

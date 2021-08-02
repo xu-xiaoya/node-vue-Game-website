@@ -137,32 +137,6 @@
         font-size: 1rem;
     }  
 }
-//nav
-.nav {
-    display: flex;
-    .nav-item {
-        // 都给一个透明的边框可以对齐
-        border-bottom:3px solid transparent;
-        padding-bottom: 0.2rem;
-        // &.active中间不要加空格！
-        &.active {
-            color :map-get($colors, 'primary');
-            // background-color: turquoise;
-            border-bottom:3px solid map-get($colors, 'primary');
-        }
-    }
-    &.nav-inverse {
-        .nav-item {
-            color:map-get($colors, 'white');
-            &.active {
-                border-bottom-color: map-get($colors, 'white');
-            }
-        }
-    }
-
-    
-}
-
 
 //borders
 @each $dir in (top, right, bottom, left) {

@@ -19,7 +19,7 @@
             
             <el-form-item label = "文章详情">
                 <!-- 第三步 使用vue2-editor -->
-                <vue-editor useCustomImageHandler 
+                <vue-editor usecustomimagehandler 
                 @image-added="handleImageAdded" v-model="model.body"></vue-editor>
             </el-form-item>
 
@@ -75,7 +75,7 @@ export default {
             this.model = res.data;
         },
         async fetchCategories() {
-            const res = await this.$http.get(`rest/categories`);
+            const res = await this.$http.get(`rest/articles/cate`);
             this.categories = res.data;
         },
         

@@ -56,6 +56,8 @@ module.exports = app => {
     app.use('/admin/api/rest/:resource', 
         authMiddleware(), resourceMiddleware(), router);
 
+
+        
     const multer = require('multer');
     // 文件传到的地址
     const upload = multer({dest: __dirname+'/../../uploads'})

@@ -33,6 +33,12 @@
                   <el-menu-item index="/articles/create">新建文章</el-menu-item>
                   <el-menu-item index="/articles/list">文章列表</el-menu-item>
                 </el-menu-item-group>
+                <!-- 视频管理 -->
+                <el-menu-item-group>
+                  <template slot="title">视频</template>
+                  <el-menu-item index="/videos/create">新建视频</el-menu-item>
+                  <el-menu-item index="/videos/list">视频列表</el-menu-item>
+                </el-menu-item-group>
             </el-submenu>
 
             <el-submenu index="2">

@@ -20,6 +20,13 @@
       "unicode_decimal": 59010
     },
     {
+      "icon_id": "2935448",
+      "name": "播放量",
+      "font_class": "liebiaoicon-bofangliang",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
       "icon_id": "6654507",
       "name": "card-hero",
       "font_class": "card-hero",

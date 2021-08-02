@@ -3,7 +3,7 @@
         <h1>{{id ? '编辑':'新建'}}广告位</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
             <el-form-item label = "名称">
-                <el-input v-model = "model.name"></el-input>
+                <el-input v-model = "model.name" placeholder="请输入广告位名称"></el-input>
             </el-form-item>
 
             <el-form-item label = "广告">
@@ -86,8 +86,8 @@ export default {
         // 添加一个广告项
         addAd () {
             this.model.items.push({
-            image: '',
-            url: ''
+                image: '',
+                url: ''
             })
         },
         // 删除一个广告项

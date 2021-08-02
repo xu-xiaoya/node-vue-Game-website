@@ -3,7 +3,7 @@
         <h1>{{id ? '编辑':'新建'}}专精</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
             <el-form-item label = "名称">
-                <el-input v-model = "model.name"></el-input>
+                <el-input v-model = "model.title" placeholder="请输入专精名称"></el-input>
             </el-form-item>
             <el-form-item label = "图标">
                 <!-- http.js中baseURL+一个后缀形成一个完整的地址 -->

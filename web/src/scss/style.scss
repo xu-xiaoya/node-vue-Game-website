@@ -191,13 +191,58 @@ p {
 .sprite{
     background: url(../assets/img/sprite.png) no-repeat 0 0;
     background-size: 28.8462rem;
-    // 精灵图必须设置宽高，否则无法显示
+    // inline-block设置宽高
     display:inline-block;
+    // 精灵图必须设置宽高，否则无法显示
+    // 爆料站
     &.sprite-news {
         width: 1.7692rem;
 	    height: 1.5385rem;
         background-position: 63.546% 15.517%;
     }
+    // 游戏官网
+    &.sprite-game {
+        width: 2.3846rem;
+	    height: 1.9231rem;
+        background-position: 9.302% 0.813%;
+    }
+    // NGA社区
+    &.sprite-nga {
+        width: 1.8462rem;
+	    height: 1.5385rem;
+        background-position: 36.467% 15.287%;
+    }
+    // 故事站
+    &.sprite-story {
+        width: 1.7692rem;
+	    height: 1.5385rem;
+        background-position: 90.483% 15.614%;;
+    }
+    // 周边商城
+    &.sprite-shop {
+        width: 1.4615rem;
+	    height: 1.6923rem;
+        background-position: 36.746% 0.924%;
+    }
+    // 公众号
+    &.sprite-weixin {
+        width: 1.8462rem;
+        height: 1.5385rem;
+        background-position:  0 96.207%;
+    }
+    // pvp
+    &.sprite-pvp {
+        width: 1.5385rem;
+	    height: 1.6154rem;
+        background-position:  89.733% 1.266%;
+    }
+    // wa
+    &.sprite-wa {
+        width: 1.5385rem;
+	    height: 1.5385rem;
+        background-position:  10.408% 15.517%;
+    }
+    // 箭头
     &.sprite-arrow {
         width: 0.7692rem;
 	    height: 0.7692rem;

@@ -4,10 +4,12 @@
         <el-form label-width = "120px" @submit.native.prevent = "save">
 
             <el-form-item label = "名称">
-                <el-input v-model = "model.username"></el-input>
+                <el-input v-model = "model.username" style = "width:300px" 
+                placeholder="请输入管理员名称"></el-input>
             </el-form-item>
             <el-form-item label = "密码">
-                <el-input  type = "text" v-model = "model.password"></el-input>
+                <el-input  type = "text" v-model = "model.password" 
+                style = "width:300px" placeholder="请输入密码"></el-input>
             </el-form-item>
             
             <el-form-item>

@@ -5,10 +5,10 @@
             <el-tabs type = "border-card" value = "basic">
                 <el-tab-pane label = "基本信息" name = "basic">
                     <el-form-item label = "名称">
-                        <el-input v-model = "model.name"></el-input>
+                        <el-input v-model = "model.name" style = "width: 200px;"></el-input>
                     </el-form-item>
                     <el-form-item label = "称号">
-                        <el-input v-model = "model.title"></el-input>
+                        <el-input v-model = "model.title" style = "width: 200px;"></el-input>
                     </el-form-item>
                     <el-form-item label = "头像">
                         <el-upload
@@ -38,7 +38,7 @@
 
                     <el-form-item label = "类型">
                         <!-- multiple多选 -->
-                        <el-select v-model = "model.categories" multiple>
+                        <el-select v-model = "model.categories" multiple placeholder="请选择">
                             <el-option 
                                 v-for = "item of categories"
                                 :key = "item._id"
@@ -213,7 +213,10 @@ export default {
     methods: {
         async save() {
             // console.log('save');
-            
+            if (!this.model.name) {   
+                this.$message.error('职业名称不能为空')
+                return
+            }
             let res;
             if (this.id) {
                 // 在使用${}使用变量时，要使用``模板字符串
@@ -234,7 +237,7 @@ export default {
             this.model = Object.assign({}, this.model, res.data);
         },        
         async fetchCategories() {
-            const res = await this.$http.get(`rest/categories`);
+            const res = await this.$http.get(`rest/heroes/cate`);
             this.categories = res.data;
         },
         async fetchItems() {
