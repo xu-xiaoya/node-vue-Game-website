@@ -85,7 +85,7 @@ module.exports = app=>{
             // 第三步：添加字段（修改）
             {
                 $addFields: {
-                    // slice对数组字段做切片映射,第一个参数：要筛的字段，第二个参数：个数
+                    // $newsList 表示关联查出来的 newsList, $slice表示切割
                     newsList: { $slice: ['$newsList', 5] }
                 }
             }
@@ -96,11 +96,8 @@ module.exports = app=>{
         // 在头部添加一个热门板块
         cats.unshift({
             name: '热门',
-            newsList: await Article.find().where({
-                // $in运算符会筛选出字段值等于指定数组中任何值的文档
-                // 此处匹配id等于 subCats的四个分类id 的分类
-                categories: { $in: subCats }
-            }).populate('categories').limit(5).lean()
+            newsList: await Article.find().where({ hot: true })
+            .populate('categories').limit(5).lean()
         })
 
         cats.map(cat => {
@@ -113,6 +110,59 @@ module.exports = app=>{
             return cat;
         })
         res.send(cats);
+    })
+
+    // 新闻列表页接口
+    router.get('/news/listTwo', async (req, res) => {
+        // 获取前端传过来的参数
+        let { newsType, page, pageSize } = req.query
+        console.log(newsType,page,pageSize);
+        // 参数处理
+        page = Number(page) ? Number(page) : 1
+        pageSize = Number(pageSize) ? Number(pageSize) : 8
+        const skip = (page - 1) * pageSize
+        console.log(newsType,page,pageSize,skip);
+
+        // 返回的新闻列表数据
+        let newsList = []
+        // 是否有下一页
+        let hasNext  = true 
+
+        if (newsType === '热门') {
+            // console.log('11');
+            newsList = await Article.find().where({ hot: true })
+            .populate('categories').skip(skip).limit(pageSize).lean();
+            // res.send(newsList);
+            // 热门的新闻总数
+            let newsTotal = await Article.find().where({ hot: true }).countDocuments();
+            // 没有下一页
+            if ((skip + newsList.length) >= newsTotal) {
+                hasNext = false
+            }
+            // 给每篇文章添加categoryName字段
+            newsList.forEach(news => {
+                news.categoryName = news.categories[news.categories.length - 1].name
+            })
+        } else {
+            // 先把对应分类信息查出来
+            const category = await Category.findOne().where({ name: newsType })
+            // 根据分类的id取查找对应文章
+            newsList = await Article.find().where({
+                categories: { $in: [category._id] }
+            }).populate('categories').skip(skip).limit(pageSize).lean();
+
+            // 当前分类的新闻总数
+            let newsTotal = await Article.find().where({
+                categories: { $in: [category._id] }
+            }).countDocuments()
+            // 没有下一页
+            if ((skip + newsList.length) >= newsTotal) {
+                hasNext = false
+            }
+            // 给每篇文章添加categoryName字段
+            newsList.forEach(news => { news.categoryName = newsType })
+        }
+        res.send({newsList, hasNext});
     })
 
     //导入职业数据

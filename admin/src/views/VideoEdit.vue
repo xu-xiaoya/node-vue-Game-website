@@ -5,6 +5,25 @@
             <el-form-item label = "名称">
                 <el-input v-model = "model.title" placeholder="请输入视频标题"></el-input>
             </el-form-item>
+            <el-form-item label = "作者">
+                <el-input v-model = "model.author" placeholder="请输入作者名称"></el-input>
+            </el-form-item>
+            <el-form-item label = "头像">
+                <span class = "text-grey fs-xs">tip:建议使用宽:高=1:1图片</span>
+                <el-upload
+                    class="avatar-uploader"
+                    :action="uploadURl"
+                    :headers="getAuthHeaders()"
+                    :show-file-list="false"
+                    :on-success="res=>$set(model, 'avatar', res.url)"
+                >
+                    <img v-if="model.avatar" :src="model.avatar" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form-item>
+            <el-form-item label = "粉丝数">
+                <el-input v-model = "model.fans" placeholder="请输入作者粉丝数量"></el-input>
+            </el-form-item>
 
             <el-form-item label="所属分类">
                 <el-select v-model="model.category" placeholder="请选择">

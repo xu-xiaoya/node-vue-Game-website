@@ -119,7 +119,7 @@
     <my-list-card icon = "card-hero" title = "职业列表" :categories= "heroCats">
       <template v-slot:banner>
         <div class="banner">
-          <img src="../assets/img/banner/德鲁伊.jpg" class="news-hero" alt="new_hero" style = "width: 100%;height: 150px;">
+          <img src="../assets/img/home_1.jpg" class="news-hero" alt="new_hero" style = "width: 100%;height: 150px;">
         </div>
       </template>
       <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
@@ -144,11 +144,11 @@
       <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
       <template #items = "{category}">
         <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">
-          <router-link class = "p-2 text-center"
+          <div class = "p-2 text-center"
             style = "width: 33%;" 
-            tag = "div"
-            :to = "`/videos/${video._id}`" 
-            v-for = "(video,i) in category.videoList" :key = "i">
+            @click="videoPlay(video)"
+            v-for = "(video,i) in category.videoList" 
+            :key = "i">
             <div class="cover">
               <img style = "width: 100%; height:60px" :src = "video.cover" alt = "">
             </div>
@@ -160,7 +160,7 @@
               <span class="play ">{{ video.play }}</span>
               <span class="date flex-1">{{ video.date | date }}</span>
             </div>
-          </router-link>
+          </div>
         </div>
       </template>
     </my-list-card>
@@ -227,7 +227,13 @@ export default {
     async fetchVideos() {
       const res = await this.$http.get('videos/list');
       this.videoCates = res.data;
-    }
+    },
+    // 跳转到视频播放页
+    videoPlay (video) {
+      // 保存视频数据到本地
+      localStorage.setItem('video', JSON.stringify(video))
+      this.$router.push('/videoPlay')
+    },
   },
   created(){
     this.fetchNewsCats();

@@ -6,6 +6,7 @@ const schema = new mongoose.Schema({
     avatar:{type: String},
     banner:{type:String},
     title:{type: String},
+    hot: { type: Boolean,default: false},
 
     // 多个分类
     categories: [{type: mongoose.SchemaTypes.ObjectId, ref:'Category'}],

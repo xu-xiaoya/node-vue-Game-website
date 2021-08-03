@@ -10,6 +10,9 @@
                     <el-form-item label = "称号">
                         <el-input v-model = "model.title" style = "width: 200px;"></el-input>
                     </el-form-item>
+                    <el-form-item label="热门">
+                        <el-switch v-model="model.hot"></el-switch>
+                    </el-form-item>
                     <el-form-item label = "头像">
                         <el-upload
                         class="avatar-uploader"

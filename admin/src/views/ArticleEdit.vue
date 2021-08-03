@@ -16,6 +16,10 @@
             <el-form-item label = "标题">
                 <el-input v-model = "model.title"></el-input>
             </el-form-item>
+
+            <el-form-item label="热门">
+                <el-switch v-model="model.hot"></el-switch>
+            </el-form-item>
             
             <el-form-item label = "文章详情">
                 <!-- 第三步 使用vue2-editor -->
@@ -24,7 +28,7 @@
             </el-form-item>
 
             <el-form-item>
-              <el-button type = "primary" native-type = "el-submit">保存</el-button>  
+                <el-button type = "primary" native-type = "el-submit">保存</el-button>  
             </el-form-item>
         </el-form>
     </div>
@@ -54,6 +58,18 @@ export default {
     methods: {
         async save() {
             // console.log('save');
+            if (!this.model.categories.length) {   
+                this.$message.error('至少要选择一个分类')
+                return
+            }
+            if (!this.model.title) {   
+                this.$message.error('文章标题不能为空')
+                return
+            }
+            if (!this.model.body) {
+                this.$message.error('文章详情不能为空')
+                return
+            }
             
             let res;
             if (this.id) {

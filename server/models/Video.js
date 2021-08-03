@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
     title: { type: String },
+    author: { type: String },
+    avatar: { type: String },
+    fans: { type: String },
+
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
     // 默认值是文章创建时间,存储的是时间戳
     date: { 

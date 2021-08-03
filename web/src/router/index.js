@@ -32,7 +32,16 @@ const routes = [
         name:'heroes', 
         component:()=>import('../views/HeroList.vue'),
       },
-      
+      {
+        path:'/newsList', 
+        name:'news', 
+        component:()=>import('../views/NewList.vue'),
+      },
+      { 
+        path: '/videoPlay', 
+        name: 'video-play', 
+        component: () => import('../views/VideoPlay') 
+      }   
     ]
   },
   {

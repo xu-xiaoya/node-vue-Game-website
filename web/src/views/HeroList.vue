@@ -1,6 +1,6 @@
 <template>
     <div id="hero-list ">
-      <div class="nav jc-around bg-white">
+        <div class="nav jc-around bg-white">
             <div class="nav-item" 
             v-for="(item, index) in heroCates" 
             :key="index"
@@ -8,30 +8,36 @@
             @click="toggleNav(index, item.name)">
                 <span class="nav-link">{{ item.name }}</span>
             </div>
-        
-      </div>
-      <!-- end of nav -->
-      <div class="hero">
-        <div class="hero-item mb-3" v-for="(item, index) in heroList" :key="index">
-          <div class="banner">
-            <img :src="item.banner" class="banner-img" alt="banner">
-          </div>
-          <div class="name"><strong>{{ item.name }}</strong></div>
         </div>
-      </div>
+      <!-- end of nav -->
+        <div class="hero">
+            <div class="hero-item mb-3" v-for="(item, index) in heroList" :key="index">
+            <div class="banner">
+                <img :src="item.banner" class="banner-img" alt="banner">
+            </div>
+            <div class="name"><strong>{{ item.name }}</strong></div>
+            </div>
+        </div>
     </div>
   </template>
   
   <script>
     export default {
       name: 'HeroList',
-      data () {
+        data () {
         return {
+          currentSkillIndex:0,
+
           heroList: [], // 当前分类下的英雄数据
           heroCates: [], //英雄分类
           active: 0,  // 当前选中的英雄分类
           heroType: '全部'
         }
+      },
+      computed:{
+        currentSkill() {
+        return this.model.features[this.currentSkillIndex];
+        },
       },
       mounted () {
         this.fetchHeroCate()
