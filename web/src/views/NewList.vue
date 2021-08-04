@@ -7,25 +7,26 @@
         :class="{'active': active == index}"
         @click="toggleNav(index, item.name)"
         >
-        
             <span class="nav-link">{{ item.name }}</span>
         </div>
     </div>
     <!-- end of nav -->
 
     <div class="news">
-        <div class="news-item" v-for="(item, index) in newsList" :key="index">
+        
+        <div class="news-item d-flex" v-for="(item, index) in newsList" :key="index">
           <div class="news-cate" :class="calcNewsClass(item.categoryName)">
             {{ item.categoryName }}
           </div>
           <router-link 
             tag="div" 
-            :to="`/article/detail/${item._id}`" 
-            class="news-title text-ellipsis">
+            :to="`/articles/${item._id}`" 
+            class="fs-xl text-ellipsis flex-1">
             {{ item.title }}
           </router-link>
-          <div class="news-date">{{ item.createdAt | date }}</div>
+          <div class="news-date fs-sm">{{ item.createdAt | date }}</div>
         </div>
+        
     </div> 
     <!-- end of news-->
       
@@ -53,7 +54,7 @@ export default {
             newsList: [],  // 新闻列表数据
             newsType: '热门', // 选中的新闻类型
             page: 1,
-            pageSize: 5,
+            pageSize: 7,
             hasNext: true  //是否有下一页 
         }
     },
@@ -131,13 +132,58 @@ export default {
                 border-radius: 3px;
                 color: white;
             }
-            
         }
-        
-        
-        
     }
-    
+    .news {
+        padding: 0 0.8rem;
+        .news-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: nowrap;
+            margin-bottom: 2rem;
+            .news-cate {
+                font-size:1rem;
+                padding: 0 0.3rem;
+                margin-right: 1rem;
+                margin-left: 0.15rem; 
+                
+                &.news-cate-one {
+                    border:2px solid green;
+                    color: green;
+                }
+                &.news-cate-two {
+                    border:2px solid #d59b40;
+                    color: #d59b40
+                } 
+                &.news-cate-three {
+                    border:2px solid red;
+                    color: red
+                }
+                &.news-cate-four {
+                    border:2px solid #4d9cff;
+                    color: #4d9cff
+                }  
+                .news-date {
+                    margin-left: 1rem;
+                    color: gray
+                }
+            }   
+        }
+    }
+    .next {
+        margin-bottom: 1.5rem;
+        .next-btn {
+            width: 100%;
+            height: 3.5rem;
+            line-height: 3.5rem ;
+            font-size: 1.3rem ;
+            &:active {
+                background-color: #e6e6e6;
+                color: #858587;
+            }
+        }
+    }
 }
     
 </style>  

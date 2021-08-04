@@ -16,7 +16,7 @@
     <!-- end of swiper -->
 
     <div class = "nav-icons bg-white mt-3  text-center pt-3 text-dark-1">
-      <div class = "d-flex flex-wrap">
+      <div class = "icon d-flex flex-wrap" >
         <div class = "nav-item mb-3">
           <a href="https://www.wowchina.com/zh-cn/" class = "text-black" style = "text-decoration: none;">
             <i class = "sprite sprite-game"></i>
@@ -41,30 +41,29 @@
             <div class = "py-2">故事站</div>
           </a>
         </div>
-        <div class = "nav-item mb-3">
+        <div class = "nav-item mb-3" :class="{'down': !foldIcon}">
           <a href="https://www.wowchina.com/zh-cn/news/17507919/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E3%80%8E%E6%9A%B4%E9%9B%AA%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83%E3%80%8F%E7%8E%B0%E5%B7%B2%E5%BC%80%E9%80%9A" 
           class = "text-black" style = "text-decoration: none;">
             <i class = "sprite sprite-weixin"></i>
             <div class = "py-2">公众号</div>
           </a>
         </div>
-        
-        <div class = "nav-item mb-3">
+        <div class = "nav-item mb-3" :class="{'down': !foldIcon}">
           <a href="https://www.pvpleaderboard.com/" class = "text-black" style = "text-decoration: none;">
             <i class = "sprite sprite-pvp"></i>
             <div class = "py-2">pvp Leader</div>
           </a>
         </div>
-        <div class = "nav-item mb-3">
+        <div class = "nav-item mb-3" :class="{'down': !foldIcon}">
           <a href="https://wago.io/weakauras" class = "text-black" style = "text-decoration: none;">
             <i class = "sprite sprite-wa"></i>
             <div class = "py-2">WA插件</div>
           </a>
         </div>
       </div>
-      <div class = "bg-light py-2 fs-sm">
-        <i class = "sprite sprite-arrow mr-1"></i>
-        收起
+      <div class = "fold bg-light py-2 fs-sm"  @click="foldIcon=!foldIcon">
+        <i class = "fold-icon sprite sprite-arrow mr-1" :class="{ 'down': !foldIcon }"></i>
+        <span class="fold-txt">{{ foldIcon ? '收起' : '展开' }}</span>
       </div>
     </div>
     <!-- end of nav icons -->
@@ -132,7 +131,7 @@
             v-for = "(hero,i) in category.heroList" 
             :key = "i"
           >
-            <img style = "width: 100%; height:75px; border-radius: 5px;" :src = "hero.avatar" alt = "">
+            <img style = "width: 100%; height:5.7692rem; border-radius: 5px;" :src = "hero.avatar" alt = "">
             <div>{{hero.name}}</div>
           </router-link>
         </div>
@@ -140,7 +139,7 @@
     </my-list-card>
 
 
-    <my-list-card icon = "shipin" title = "精彩视频" :categories= "videoCates" class = "mb-2">
+    <my-list-card icon = "shipin" title = "精彩视频" :categories= "videoCates" class = "mb-5" >
       <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
       <template #items = "{category}">
         <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">
@@ -150,7 +149,7 @@
             v-for = "(video,i) in category.videoList" 
             :key = "i">
             <div class="cover">
-              <img style = "width: 100%; height:60px" :src = "video.cover" alt = "">
+              <img style = "width: 100%; height:4.6154rem" :src = "video.cover" alt = "">
             </div>
             <div class="title ">
               <span class = "text-ellipsis" style = "width: 120px;">{{ video.title }}</span>
@@ -209,6 +208,7 @@ export default {
       newsCats:[],    //新闻数据
       heroCats:[],    //职业数据
       videoCates:[],  //视频数据
+      foldIcon:false, // 控制图标区域的展开
     };
   },
   methods: {
@@ -274,6 +274,41 @@ export default {
   right: 5px !important;
   left: auto;
 }
+
+.icon {
+  overflow: auto;     
+  .down{
+     display: none;
+  }   
+}
+
+@keyframes mycolor {
+  0% {
+    position: relative;
+    background-color: red; 
+  }
+  /* 50% { 
+    
+    background-color: red; 
+    opacity: 0;
+  } */
+  100% { 
+   
+  }
+
+}
+
+.fold  {
+        text-align: center;
+        .fold-icon {
+          &.down {
+            transform: rotateX(180deg);
+          }   
+        }
+}
+        
+        
+        
 .nav-icons {
   border-top: 1px solid #d4d9de;
   border-bottom: 1px solid #d4d9de;

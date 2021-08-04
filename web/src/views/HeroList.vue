@@ -1,6 +1,6 @@
 <template>
     <div id="hero-list ">
-        <div class="nav jc-around bg-white">
+        <div class="nav jc-around  bg-white">
             <div class="nav-item" 
             v-for="(item, index) in heroCates" 
             :key="index"
@@ -11,12 +11,22 @@
         </div>
       <!-- end of nav -->
         <div class="hero">
-            <div class="hero-item mb-3" v-for="(item, index) in heroList" :key="index">
-            <div class="banner">
-                <img :src="item.banner" class="banner-img" alt="banner">
-            </div>
-            <div class="name"><strong>{{ item.name }}</strong></div>
-            </div>
+            <router-link 
+            class="hero-item mb-3" 
+            tag = "div"
+            :to="`/heroes/${item._id}`" 
+            v-for="(item, index) in heroList" 
+            :key="index">
+                <div class="banner">
+                    <img :src="item.banner" class="banner-img" alt="banner">
+                </div>
+                <div 
+                class="name"
+                :class="calcNewsClass(item.name)"
+                >
+                  <span><strong>{{ item.name }}</strong></span>
+                </div>
+            </router-link>
         </div>
     </div>
   </template>
@@ -62,19 +72,124 @@
           this.active = index
           this.heroType = heroType
           this.fetchHeroListTwo()
-        }
+        },
+        calcNewsClass (heroName) {
+            let className = ''
+            switch (heroName) {
+                case '猎人': className = 'Hunter'
+                    break
+                case '牧师': className = 'Priest'
+                    break
+                case '法师': className = 'Mage'
+                    break
+                case '武僧': className = 'Monk'
+                    break
+                case '恶魔猎手': className = 'Demon-Hunter'
+                    break
+                case '圣骑士': className = 'Paladin'
+                    break
+                case '潜行者': className = 'Rogue'
+                    break
+                case '萨满祭司': className = 'Shaman'
+                    break
+                case '术士': className = 'Warlock'
+                    break
+                case '死亡骑士': className = 'Death-Knight'
+                    break
+                case '战士': className = 'Worrior'
+                    break
+                case '德鲁伊': className = 'Druid'
+                    break
+                default: heroName = 'hero'
+            }
+            return className
+        }      
       }
     }
 </script>
 <style scoped lang = "scss">
+.nav {
+    display: flex;
+    margin-bottom: 1.5rem; 
+    .nav-item {
+        position: relative;
+        /* border:1px black solid; */
+        width: 25%;
+        height: 2.5rem;
+        line-height: 2.5rem;  
+        text-align: center;
+        font-size: 1rem;
+        
+        &:after{
+          background-color: transparent;
+        }
+        &.active {
+          color: orange
+        } 
+        &.active:after{
+          background-color: orange 
+        }
+    }
+}
 .hero {
-    margin: 0 -0.7rem 1rem;
+    margin: 0 -0.7rem 3rem;
     .hero-item{
         text-align: center;
         box-sizing: border-box;
         .banner img {
             width: 85%;
             height: 150px;
+        }
+        .name {
+          width: 85%;
+          margin-left: 7.5%;
+          margin-top: -1%;
+          background-color: #fff;
+          span{
+            display: inline-block;
+            height:25px;
+            line-height:25px;
+          }
+          &.Hunter {
+            color: green;
+          }
+          &.Priest {
+            color: rgb(255, 255, 255);
+            background-color: rgb(212, 212, 212);
+          }
+          &.Mage {
+            color: rgb(0, 164, 214);
+          }
+          &.Monk {
+            color: #00FF96;
+          }
+          &.Demon-Hunter {
+            color: rgb(161, 8, 199);
+          }
+          &.Paladin {
+            color: rgb(230, 124, 156);
+          }
+          &.Rogue {
+            color: rgb(221, 218, 60);
+          }
+          &.Shaman {
+            color: rgb(47, 53, 139);
+          }
+          &.Warlock {
+            color: rgb(109, 114, 184)
+          }
+          &.Death-Knight {
+            color: red;
+          }
+          &.Worrior {
+            color: rgb(133, 117, 104);
+          }
+          &.Druid {
+            color: orange;
+          }
+          &.hero {
+            color: #000;
+          }
         }
     }
 }

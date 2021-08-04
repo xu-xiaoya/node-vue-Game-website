@@ -72,10 +72,10 @@
               <br>
 
               <div class ="d-flex">
-                <router-link tag = "button" to = "/" class = "btn btn-lg flex-1">
+                <div @click = "$refs.list.swiper.slideTo(1); active=1;" class = "btn btn-lg flex-1">
                   <i class = "iconfont icon-menu1"></i>
                   英雄介绍视频
-                </router-link>
+                </div>
                 <router-link tag = "button" to = "/" class = "btn btn-lg flex-1 ml-2">
                   <i class = "iconfont icon-menu1"></i>
                   英雄介绍视频

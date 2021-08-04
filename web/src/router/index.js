@@ -40,7 +40,17 @@ const routes = [
       { 
         path: '/videoPlay', 
         name: 'video-play', 
-        component: () => import('../views/VideoPlay') 
+        component: () => import('../views/VideoPlay.vue') 
+      },
+      { 
+        path: '/strategy', 
+        name: 'strategy', 
+        component: () => import('../views/Strategy.vue') 
+      },
+      { 
+        path: '/ip', 
+        name: 'ip', 
+        component: () => import('../views/Ip') 
       }   
     ]
   },
