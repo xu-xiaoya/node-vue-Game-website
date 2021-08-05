@@ -59,3 +59,16 @@ A.基于ElementUI搭建基本后台界面
 11.职业列表接口
 12.新闻详情页
 13.职业详情页
+
+四、发布和部署
+1.生产环境编译
+    npm run build   生成dist文件包
+    npm i -g serve  全局安装serve
+    serve dist      生成端口，访问页面
+2.域名和服务器
+3.域名解析
+4.Nginx安装和配置
+5.MongoDB数据库的安装和配置
+6.git安装、配置ssh-key
+7.Node.js安装
+8.拉取代码，安装pm2并启动项目

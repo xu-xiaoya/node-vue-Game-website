@@ -20,7 +20,10 @@ Vue.component('my-list-card', ListCard);
 
 import axios from 'axios';
 Vue.prototype.$http = axios.create({
-  baseURL:'http://localhost:3000/web/api'
+  // 接口统一前缀,生产环境所需的不是本机地址
+  // 必须VUE_APP开头，_+自定义变量名
+  baseURL: process.env.VUE_APP_API_URL || '/web/api',
+  // baseURL:'http://localhost:3000/web/api'
 })
 
 // router-link跳转回到页面顶部
