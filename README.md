@@ -1,11 +1,11 @@
 # node-vue-Game-website
  
-一、初始化项目
+## 一、初始化项目
 1.vue cli创建admin
 2.serve服务器端
 3.web游戏官网前端
 
-二、管理后台
+## 二、管理后台
 A.基于ElementUI搭建基本后台界面
  (1)Home界面 echarts图表
 
@@ -44,7 +44,7 @@ A.基于ElementUI搭建基本后台界面
 19.服务端登陆校验
 20.客户端路由限制
 
-三、移动端网站
+## 三、移动端网站
 使用scss预编译器 (npm i -D sass sass-loader@8.x)
 1.样式重置(*,html,body,a……)
 2.创建色彩和文本对齐工具类
@@ -60,7 +60,7 @@ A.基于ElementUI搭建基本后台界面
 12.新闻详情页
 13.职业详情页
 
-四、发布和部署
+## 四、发布和部署
 1.生产环境编译
     npm run build   生成dist文件包
     npm i -g serve  全局安装serve
