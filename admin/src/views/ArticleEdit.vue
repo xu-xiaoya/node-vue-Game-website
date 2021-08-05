@@ -13,7 +13,7 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item label = "标题">
+            <el-form-item label = "标题" style = "width: 40rem;">
                 <el-input v-model = "model.title"></el-input>
             </el-form-item>
 
@@ -28,7 +28,7 @@
             </el-form-item>
 
             <el-form-item>
-                <el-button type = "primary" native-type = "el-submit">保存</el-button>  
+                <el-button type="warning" native-type = "el-submit">保存</el-button>  
             </el-form-item>
         </el-form>
     </div>

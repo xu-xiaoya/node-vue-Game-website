@@ -139,7 +139,7 @@
     </my-list-card>
 
 
-    <my-list-card icon = "shipin" title = "精彩视频" :categories= "videoCates" class = "mb-5" >
+    <my-list-card icon = "shipin" title = "精彩视频" :categories= "videoCates" class = "mb-3" >
       <!-- 对应ListCard具名插槽，只能在template使用v-slot，v-slot:items简写：#items -->
       <template #items = "{category}">
         <div class = "d-flex flex-wrap" style = "margin:0 -0.5rem">

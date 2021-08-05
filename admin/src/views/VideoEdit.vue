@@ -3,10 +3,10 @@
         <h1>{{id ? '编辑':'新建'}}视频</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
             <el-form-item label = "名称">
-                <el-input v-model = "model.title" placeholder="请输入视频标题"></el-input>
+                <el-input v-model = "model.title" placeholder="请输入视频标题" style = "width: 20rem;"></el-input>
             </el-form-item>
             <el-form-item label = "作者">
-                <el-input v-model = "model.author" placeholder="请输入作者名称"></el-input>
+                <el-input v-model = "model.author" placeholder="请输入作者名称" style = "width: 20rem;"></el-input>
             </el-form-item>
             <el-form-item label = "头像">
                 <span class = "text-grey fs-xs">tip:建议使用宽:高=1:1图片</span>
@@ -21,9 +21,6 @@
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
-            <el-form-item label = "粉丝数">
-                <el-input v-model = "model.fans" placeholder="请输入作者粉丝数量"></el-input>
-            </el-form-item>
 
             <el-form-item label="所属分类">
                 <el-select v-model="model.category" placeholder="请选择">
@@ -36,8 +33,11 @@
                 </el-select>        
             </el-form-item>
 
+            <el-form-item label = "粉丝数">
+                <el-input v-model = "model.fans" placeholder="请输入作者粉丝数量" style = "width: 20rem;"></el-input>
+            </el-form-item>
             <el-form-item label="播放量">
-                <el-input v-model="model.play" placeholder="请输入视频播放量"></el-input>
+                <el-input v-model="model.play" placeholder="请输入视频播放量" style = "width: 20rem;"></el-input>
             </el-form-item>    
 
             <el-form-item label = "封面">
@@ -49,8 +49,8 @@
                     :show-file-list="false"
                     :on-success="res=>$set(model, 'cover', res.url)"
                 >
-                <img v-if="model.cover" :src="model.cover" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    <img v-if="model.cover" :src="model.cover" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
 
@@ -61,6 +61,7 @@
                     :show-file-list="false"
                     :headers="getAuthHeaders()"
                     :on-success="res=>$set(model, 'video', res.url)"
+                    :before-upload="beforeVideo"
                 >
                     <video v-if="model.video" controls :src="model.video" class="avatar"></video>
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -69,7 +70,7 @@
             
 
             <el-form-item>
-              <el-button type = "primary" native-type = "el-submit">保存</el-button>  
+              <el-button type = "warning" native-type = "el-submit">保存</el-button>  
             </el-form-item>
         </el-form>
     </div>
@@ -123,6 +124,13 @@ export default {
         async fetchCategories() {
             const res = await this.$http.get(`rest/videos/cate`);
             this.categories = res.data;
+        },
+         // 文件上传之前做些判断
+        beforeVideo (file) {
+            if (file.type.indexOf('video') == -1) {
+                this.$message.error('上传的文件不符合格式')
+                return false
+            }
         },
     },
     created() {

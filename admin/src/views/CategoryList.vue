@@ -7,7 +7,7 @@
                     <span class="title">数据列表</span>
                 </div>
                 <div>
-                    <el-button size="small" @click="$router.push('/categories/create')">添加</el-button>
+                    <el-button type="info"  size="small" @click="$router.push('/categories/create')">添加</el-button>
                 </div>
             </div>
         </el-card>
@@ -24,13 +24,13 @@
                         /categories/edit/${scope.row._id}前要加'/',否则不是从根路径开始
                     -->
                     <el-button 
-                        type = "primary" 
+                        type="warning" 
                         size = "small"
                         @click = "$router.push(`/categories/edit/${scope.row._id}`)"
                     >编辑</el-button>
 
                     <el-button 
-                        type = "primary" 
+                        type="warning" 
                         size = "small"
                         @click = "remove(scope.row)"
                     >删除</el-button>

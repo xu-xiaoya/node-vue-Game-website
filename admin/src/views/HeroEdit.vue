@@ -11,7 +11,7 @@
                         <el-input v-model = "model.title" style = "width: 200px;"></el-input>
                     </el-form-item>
                     <el-form-item label="热门">
-                        <el-switch v-model="model.hot"></el-switch>
+                        <el-switch v-model="model.hot" ></el-switch>
                     </el-form-item>
                     <el-form-item label = "头像">
                         <el-upload
@@ -107,7 +107,7 @@
                
 
                 <el-tab-pane label = "特点" name = "features">
-                    <el-button size = "small" @click = "model.features.push({})">
+                    <el-button plain type="info" size = "small" @click = "model.features.push({})">
                         <i class = "el-icon-plus"></i>添加特点
                     </el-button>
                     <el-row type = "flex" style = "flex-wrap:wrap">
@@ -147,7 +147,7 @@
                 </el-tab-pane>
 
                 <el-tab-pane label = "搭档" name = "partners">
-                    <el-button size = "small" @click = "model.partners.push({})">
+                    <el-button type="info" plain size = "small" @click = "model.partners.push({})">
                         <i class = "el-icon-plus"></i>添加搭档
                     </el-button>
                     <el-row type = "flex" style = "flex-wrap:wrap">
@@ -180,10 +180,9 @@
                     </el-row>
                 </el-tab-pane>
 
-                
             </el-tabs>
             <el-form-item style="margin-top: 1rem;">
-                <el-button type="primary" native-type="submit">保存</el-button>
+                <el-button type="warning" native-type="submit">保存</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -206,6 +205,7 @@ export default {
                 avatar: "",
                 features: [],
                 partners: [],
+                strategies:[],
                 scores: {
                     difficult: 0
                 }
@@ -250,7 +250,30 @@ export default {
         async fetchHeroes() {
             const res = await this.$http.get(`rest/heroes`);
             this.heroes = res.data;
-        }
+        },
+        // 添加一个攻略
+        addStrategy () {
+            this.model.strategies.push({});
+        },
+         // 删除一个攻略
+        delStrategy (index) {
+            this.$confirm(`确认要删除该攻略?`, '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                // 先前端删除数据，点保存时再提交
+                this.model.strategies.splice(index, 1)
+                this.$message.success('删除成功')
+            })
+        },
+        // 文件上传之前做些判断
+        beforeVideo (file) {
+            if (file.type.indexOf('video') == -1) {
+                this.$message.error('上传的文件不符合格式')
+                return false
+            }
+        },
     },
     created() {
         this.id && this.fetch();
@@ -261,6 +284,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+
 </style>
   

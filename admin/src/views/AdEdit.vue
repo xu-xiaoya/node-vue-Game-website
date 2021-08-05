@@ -3,11 +3,11 @@
         <h1>{{id ? '编辑':'新建'}}广告位</h1>
         <el-form label-width = "120px" @submit.native.prevent = "save">
             <el-form-item label = "名称">
-                <el-input v-model = "model.name" placeholder="请输入广告位名称"></el-input>
+                <el-input v-model = "model.name" placeholder="请输入广告位名称" style = "width: 30rem;"></el-input>
             </el-form-item>
 
             <el-form-item label = "广告">
-                <el-button size = "small" @click = "addAd">
+                <el-button type="info" plain size = "small" @click = "addAd">
                     <i class = "el-icon-plus"></i>添加广告
                 </el-button>
                 <el-row type = "flex" style = "flex-wrap:wrap">
@@ -16,7 +16,10 @@
                         :key = "i">
                         <el-divider></el-divider>
                         <el-form-item label = "跳转链接（URL)">
-                            <el-input v-model = "item.url" placeholder="请输入图片跳转链接"></el-input>
+                            <el-input v-model = "item.url" placeholder="请输入图片跳转链接" style = "width: 30rem;"></el-input>
+                        </el-form-item>
+                        <el-form-item label = "标题">
+                            <el-input v-model = "item.title" placeholder="请输入标题" style="margin-top: 0.5rem; width: 15rem;"></el-input>
                         </el-form-item>
                         <el-form-item label = "广告图" style="margin-top: 0.5rem;">
                             <el-upload
@@ -41,7 +44,7 @@
             
 
             <el-form-item>
-              <el-button type = "primary" native-type = "el-submit">保存</el-button>  
+              <el-button type="warning"  native-type = "el-submit">保存</el-button>  
             </el-form-item>
         </el-form>
     </div>
@@ -114,4 +117,10 @@ export default {
 </script>
 
 <style>
+.el-divider--horizontal {
+    display: block;
+    height: 1px;
+    width: 40rem;
+    margin: 24px 0;
+}
 </style>

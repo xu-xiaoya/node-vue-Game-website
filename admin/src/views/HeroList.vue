@@ -7,7 +7,7 @@
                     <span class="title">数据列表</span>
                 </div>
                 <div>
-                    <el-button size="small" @click="$router.push('/heroes/create')">添加</el-button>
+                    <el-button  type="info" size="small" @click="$router.push('/heroes/create')">添加</el-button>
                 </div>
             </div>
         </el-card>
@@ -26,13 +26,13 @@
                 
                 <template slot-scope="scope">
                     <el-button 
-                        type = "primary" 
+                        type="warning"
                         size = "small"
                         @click = "$router.push(`/heroes/edit/${scope.row._id}`)"
                     >编辑</el-button>
 
                     <el-button 
-                        type = "primary" 
+                        type="warning"
                         size = "small"
                         @click = "remove(scope.row)"
                     >删除</el-button>

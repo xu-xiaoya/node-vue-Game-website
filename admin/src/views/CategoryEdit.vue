@@ -16,11 +16,11 @@
             </el-form-item>
 
             <el-form-item label = "分类名称">
-                <el-input v-model = "model.name" placeholder="请输入分类名称"></el-input>
+                <el-input v-model = "model.name" placeholder="请输入分类名称" style = "width: 30rem;"></el-input>
             </el-form-item>
             
             <el-form-item>
-              <el-button type = "primary" native-type = "el-submit">保存</el-button>  
+              <el-button type="warning" native-type = "el-submit">保存</el-button>  
             </el-form-item>
         </el-form>
     </div>

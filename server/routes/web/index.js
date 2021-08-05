@@ -199,7 +199,7 @@ module.exports = app=>{
     }) 
     // 职业列表接口
     router.get('/heroes/list', async (req, res) => {
-        // 先找出顶级分类：新闻分类
+        // 先找出顶级分类
         const parent = await Category.findOne({
             name: '职业分类'
         })
@@ -225,7 +225,8 @@ module.exports = app=>{
             heroList: await Hero.find().where({
                 // $in运算符会筛选出字段值等于指定数组中任何值的文档
                 // 此处匹配id等于 subCats的四个分类id 的分类
-                categories: { $in: subCats }
+                categories: { $in: subCats },
+                hot: true
             }).limit(4).lean()
         })
         res.send(cats);
@@ -261,7 +262,7 @@ module.exports = app=>{
         const data = await Hero.findById(req.params.id)
         .populate('categories items1 items2 partners.hero').lean();
         res.send(data);
-    }),
+    })
 
 
 
@@ -282,6 +283,12 @@ module.exports = app=>{
           ])
           res.send(catesData);
     })
+    // 攻略视频列表接口
+    router.get('/video/strategy', async(req, res) =>{
+        const strategy = await Video.find()
+        .where({ category: '6107a6a9d274221cb88c198f' }).limit(6);
+        res.send(strategy);
+    }),
     // 视频详情
     router.get('/videos/:id', async(req,res) => {
         const data = await Video.findById(req.params.id).lean();
@@ -321,6 +328,11 @@ module.exports = app=>{
     // 攻略页轮播图列表接口
     router.get('/strategy/home', async(req, res) =>{
         const data = await Ad.findById('610a3039c58d0999accba452');
+        res.send(data.items);
+    }),
+    // ip图片列表接口
+    router.get('/ip/home', async(req, res) =>{
+        const data = await Ad.findById('610b42a422214fc5dc23a736');
         res.send(data.items);
     }),
 

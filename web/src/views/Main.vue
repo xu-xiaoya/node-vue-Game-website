@@ -11,14 +11,14 @@
     </div>
     <div class = "bg-primary pt-3 pb-2">
         <div class = "nav nav-inverse pb-1 jc-around">
-            <div class = "nav-item active">
-                <router-link class="nav-link  " tag = "div"  to="/">首页</router-link>
+            <div class = "nav-item" :class = "{active: active == 0}" @click = "active=0">
+                <router-link class="nav-link  " tag = "div"  to="/" >首页</router-link>
             </div>
-            <div class = "nav-item">
-                <router-link class="nav-link" tag = "div" to="/strategy">攻略</router-link>
+            <div class = "nav-item" :class = "{active: active == 1}" @click = "active=1">
+                <router-link class="nav-link" tag = "div" to="/strategy" >攻略</router-link>
             </div>
-            <div class = "nav-item">
-                <router-link class="nav-link" tag = "div" to="/ip">IP新游</router-link>
+            <div class = "nav-item" :class = "{active: active == 2}" @click = "active=2">
+                <router-link class="nav-link" tag = "div" to="/ip" >IP新游</router-link>
             </div>
         </div>
     </div>
@@ -28,7 +28,11 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            active:0
+        }
+    },
 }
 </script>
 

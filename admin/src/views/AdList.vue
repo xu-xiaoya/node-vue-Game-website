@@ -7,13 +7,13 @@
                     <span class="title">数据列表</span>
                 </div>
                 <div>
-                    <el-button size="small" @click="$router.push('/ads/create')">添加</el-button>
+                    <el-button size="small" type = "info" @click="$router.push('/ads/create')">添加</el-button>
                 </div>
             </div>    
         </el-card>
 
         <h1>广告位列表</h1>
-        <el-table :data="items">
+        <el-table :data="items" >
             <el-table-column prop="_id" label="ID" width="220"></el-table-column>
             <el-table-column prop="name" label="物品名称"></el-table-column>
             <el-table-column prop="image" label="头像">
@@ -25,13 +25,13 @@
                 
                 <template slot-scope="scope">
                     <el-button 
-                        type = "primary" 
+                        type="warning"
                         size = "small"
                         @click = "$router.push(`/ads/edit/${scope.row._id}`)"
                     >编辑</el-button>
 
                     <el-button 
-                        type = "primary" 
+                        type="warning"
                         size = "small"
                         @click = "remove(scope.row)"
                     >删除</el-button>

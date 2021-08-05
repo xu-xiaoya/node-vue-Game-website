@@ -14,7 +14,7 @@
                 <el-input  type = "password" v-model = "model.password"></el-input>
              </el-form-item>
             <el-form-item>
-                <el-button type = "primary" native-type = "submit">登录</el-button>
+                <el-button type = "warning" native-type = "submit">登录</el-button>
              </el-form-item>
         </el-form>
     </el-card>
