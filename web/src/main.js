@@ -22,7 +22,7 @@ Vue.component('my-image', Image);
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad,{
     error:'./assets/logo.png',
-    loading:'https://img.lanrentuku.com/img/allimg/1212/5-121204193951.gif'
+    loading:'./assets/loading.gif'
 })
 
 import axios from 'axios';
