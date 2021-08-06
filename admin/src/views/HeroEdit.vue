@@ -21,7 +21,7 @@
                         :show-file-list="false"
                         :on-success="res => $set(model,'avatar', res.url)"
                         >
-                            <img v-if="model.avatar" :src="model.avatar" class="avatar">
+                            <img v-if="model.avatar" v-lazy="model.avatar" class="avatar">
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
@@ -34,7 +34,7 @@
                         :show-file-list="false"
                         :on-success="res => $set(model,'banner', res.url)"
                         >
-                            <img v-if="model.banner" :src="model.banner" class="avatar">
+                            <img v-if="model.banner" v-lazy="model.banner" class="avatar">
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
@@ -127,7 +127,7 @@
                                     :show-file-list="false"
                                     :on-success="res=>$set(item, 'icon', res.url)"
                                 >
-                                    <img v-if="item.icon" :src="item.icon" class="avatar">
+                                    <img v-if="item.icon" v-lazy="item.icon" class="avatar">
                                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                                 </el-upload>
                             </el-form-item>

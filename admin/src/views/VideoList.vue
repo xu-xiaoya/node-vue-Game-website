@@ -16,9 +16,9 @@
         <el-table :data="items">
             <el-table-column prop="_id" label="ID" width="220"></el-table-column>
             <el-table-column prop="title" label="视频名称"></el-table-column>
-            <el-table-column prop="cover" label="封面">
+            <el-table-column prop="cover" label="封面" >
                 <template slot-scope="scope">
-                    <img :src = "scope.row.cover" style = "height: 3rem;">
+                    <img v-lazy = "scope.row.cover" style = "width:110px; height: 3.5rem;">
                 </template>
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="180">

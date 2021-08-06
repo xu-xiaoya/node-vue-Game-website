@@ -18,7 +18,7 @@
             <el-table-column prop="name" label="专精名称"></el-table-column>
             <el-table-column prop="icon" label="图标">
                 <template slot-scope="scope">
-                    <img :src = "scope.row.icon" style = "height: 3rem;">
+                    <img v-lazy = "scope.row.icon" style = "height: 3rem;">
                 </template>
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="180">

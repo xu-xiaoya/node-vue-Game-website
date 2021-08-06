@@ -4,7 +4,7 @@
       <swiper ref="adsSwiper" :options="swiperOption">
         <swiper-slide v-for="(item, index) in strategyAds" :key="index">
           <a :href="item.url">
-            <img width="100%" height="200px" style="display:block" :src="item.image" alt="ads">
+            <img width="100%" height="200px" style="display:block" v-lazy="item.image" alt="ads">
           </a>
         </swiper-slide>
         <div class="swiper-pagination pagination-home text-right px-3 pb-1" slot="pagination"></div>

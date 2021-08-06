@@ -18,9 +18,11 @@
             <el-table-column prop="name" label="物品名称"></el-table-column>
             <el-table-column prop="image" label="头像">
                 <template slot-scope="scope">
-                    <img :src = "scope.row.items[0].image" style = "height: 3rem;">
+                    <img :src = "scope.row.items[0].image" style = "width:100px;height: 3.5rem;">
                 </template>
             </el-table-column>
+
+            
             <el-table-column fixed="right" label="操作" width="180">
                 
                 <template slot-scope="scope">

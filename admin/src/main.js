@@ -9,6 +9,12 @@ import './scss/style.scss'
 import './style.css'
 import http from './http'
 
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+    error:'./assets/logo.png',
+    loading:'./assets/loading.gif'
+})
+
 Vue.prototype.$http = http
 Vue.prototype.echarts = echarts
 

@@ -29,7 +29,7 @@
                                 :headers="getAuthHeaders()"
                                 :on-success="res=>$set(item, 'image', res.url)"
                             >
-                            <img v-if="item.image" :src="item.image" class="avatar">
+                            <img v-if="item.image" v-lazy="item.image" class="avatar">
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                         </el-form-item>
