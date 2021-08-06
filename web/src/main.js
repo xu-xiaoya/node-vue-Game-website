@@ -20,7 +20,7 @@ Vue.component('my-list-card', ListCard);
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad,{
     error:'./assets/logo.png',
-    loading:'./assets/loading.gif'
+    loading:'https://img.lanrentuku.com/img/allimg/1212/5-121204193951.gif'
 })
 
 import axios from 'axios';

@@ -81,7 +81,7 @@
               :key = "i"
               @click="videoPlay(video)">
                 <div class="cover">
-                  <my-image :src="video.cover" class="cover-img" alt="cover"></my-image>
+                  <img v-lazy="video.cover" class="cover-img" alt="cover">
                 </div>
                 <div class="info">
                   <div class="title">{{ "1. " + video.title }}</div>

@@ -4,7 +4,7 @@
       <swiper :options="swiperOption" ref="mySwiper">
           <swiper-slide v-for="(item, index) in homeAds" :key="index">
             <a :href="item.url">
-              <img v-lazy="item.image" style="display:block; width:100%" alt="ads-img">
+              <img :src="item.image" style="display:block; width:100%" alt="ads-img">
             </a>
           </swiper-slide>
 
@@ -166,13 +166,8 @@
       </template>
     </my-list-card>
 
-
-    <!-- <my-card icon = "qa" title = "图文攻略"></my-card> -->
-    
     
   </div>
-  
-  
   
 </template>
 
