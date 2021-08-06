@@ -131,8 +131,8 @@
             v-for = "(hero,i) in category.heroList" 
             :key = "i"
           >
-            <my-image style = "width: 100%; height:5.7692rem; border-radius: 5px;" :src = "hero.avatar" alt = "">
-            </my-image>
+            <img style = "width: 100%; height:5.7692rem; border-radius: 5px;" v-lazy = "hero.avatar" alt = "">
+            
             <div>{{hero.name}}</div>
           </router-link>
         </div>
@@ -150,8 +150,8 @@
             v-for = "(video,i) in category.videoList" 
             :key = "i">
             <div class="cover">
-              <my-image style = "width: 100%; height:4.6154rem" 
-              :src = "video.cover" alt = ""></my-image>
+              <img style = "width: 100%; height:4.6154rem" 
+              v-lazy = "video.cover" alt = "">
             </div>
             <div class="title ">
               <span class = "text-ellipsis" style = "width: 120px;">{{ video.title }}</span>

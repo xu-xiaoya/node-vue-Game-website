@@ -22,12 +22,6 @@ const routes = [
         component:()=>import('../views/Article.vue'),
       },
       {
-        path:'/videos/:id', 
-        name:'video', 
-        props:true,
-        component:()=>import('../views/Video.vue'),
-      },
-      {
         path:'/heroList', 
         name:'heroes', 
         component:()=>import('../views/HeroList.vue'),

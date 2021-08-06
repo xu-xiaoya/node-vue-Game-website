@@ -7,7 +7,7 @@
 
         <div class="author mt-4">
             <div class = "d-flex">
-                <img :src="videoDetail.avatar" alt="avatar">
+                <img v-lazy="videoDetail.avatar" alt="avatar">
                 <div class = "flex-1 ml-3 mt-1">
                     <div class="fs-lg">
                         <strong>作者：</strong> {{ videoDetail.author }}
@@ -23,10 +23,6 @@
             </div>
         </div>
       </div>
-
-
-      
-
     </div>
   </template>
   

@@ -29,7 +29,7 @@
             <div class="video" :class="{'down': foldRank}">
               <div class="video-item video-item-1" @click="videoPlay(item.videoList[0])">
                 <div class="cover">
-                  <my-image :src="item.videoList[0].cover" class="cover-img" alt="cover"></my-image>
+                  <img v-lazy="item.videoList[0].cover" class="cover-img" alt="cover">
                 </div>
                 <div class="info">
                   <div class="title">{{ "1. " + item.videoList[0].title }}</div>

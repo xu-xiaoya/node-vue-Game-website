@@ -19,6 +19,11 @@ Vue.component('my-list-card', ListCard);
 import Image from './components/Image.vue'
 Vue.component('my-image', Image);
 
+import VueLazyLoad from 'vue-lazyload'
+Vue.use(VueLazyLoad,{
+    error:'./assets/logo.png',
+    loading:'https://img.lanrentuku.com/img/allimg/1212/5-121204193951.gif'
+})
 
 import axios from 'axios';
 Vue.prototype.$http = axios.create({
