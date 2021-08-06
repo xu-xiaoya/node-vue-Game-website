@@ -6,7 +6,8 @@
     :key = "i">
         <div class = "ai-start" >
             <a :href="item.url">
-                <img :src="item.image" style="display:block; width:100%" alt="ads-img">
+                <my-image :src="item.image" 
+                style="display:block; width:100%" alt="ads-img"></my-image>
             </a>
             <div class = "text-center mb-3">
                 <span>{{item.title}}</span>

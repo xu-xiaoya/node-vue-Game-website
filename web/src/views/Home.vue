@@ -131,7 +131,8 @@
             v-for = "(hero,i) in category.heroList" 
             :key = "i"
           >
-            <img style = "width: 100%; height:5.7692rem; border-radius: 5px;" :src = "hero.avatar" alt = "">
+            <my-image style = "width: 100%; height:5.7692rem; border-radius: 5px;" :src = "hero.avatar" alt = "">
+            </my-image>
             <div>{{hero.name}}</div>
           </router-link>
         </div>
@@ -149,7 +150,8 @@
             v-for = "(video,i) in category.videoList" 
             :key = "i">
             <div class="cover">
-              <img style = "width: 100%; height:4.6154rem" :src = "video.cover" alt = "">
+              <my-image style = "width: 100%; height:4.6154rem" 
+              :src = "video.cover" alt = ""></my-image>
             </div>
             <div class="title ">
               <span class = "text-ellipsis" style = "width: 120px;">{{ video.title }}</span>
@@ -166,8 +168,8 @@
 
 
     <!-- <my-card icon = "qa" title = "图文攻略"></my-card> -->
-
-
+    
+    
   </div>
   
   

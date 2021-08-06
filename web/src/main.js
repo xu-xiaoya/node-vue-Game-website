@@ -16,6 +16,8 @@ import Card from './components/Card.vue'
 Vue.component('my-card', Card);
 import ListCard from './components/ListCard.vue'
 Vue.component('my-list-card', ListCard);
+import Image from './components/Image.vue'
+Vue.component('my-image', Image);
 
 
 import axios from 'axios';

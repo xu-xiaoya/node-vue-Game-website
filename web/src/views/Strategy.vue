@@ -29,7 +29,7 @@
             <div class="video" :class="{'down': foldRank}">
               <div class="video-item video-item-1" @click="videoPlay(item.videoList[0])">
                 <div class="cover">
-                  <img :src="item.videoList[0].cover" class="cover-img" alt="cover">
+                  <my-image :src="item.videoList[0].cover" class="cover-img" alt="cover"></my-image>
                 </div>
                 <div class="info">
                   <div class="title">{{ "1. " + item.videoList[0].title }}</div>
@@ -81,7 +81,7 @@
               :key = "i"
               @click="videoPlay(video)">
                 <div class="cover">
-                  <img :src="video.cover" class="cover-img" alt="cover">
+                  <my-image :src="video.cover" class="cover-img" alt="cover"></my-image>
                 </div>
                 <div class="info">
                   <div class="title">{{ "1. " + video.title }}</div>
