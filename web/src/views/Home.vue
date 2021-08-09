@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class = "ads-wrap">
+    <div class = "ads-wrap" >
       <swiper :options="swiperOption" ref="mySwiper">
           <swiper-slide v-for="(item, index) in homeAds" :key="index">
             <a :href="item.url">
-              <img :src="item.image" style="display:block; width:100%" alt="ads-img">
+              <img class = "lunbo" :src="item.image" style="display:block; width:100%" alt="ads-img">
             </a>
           </swiper-slide>
 
@@ -173,6 +173,7 @@
 
 <script>
 import dayjs from 'dayjs';
+import $ from 'jquery'
 export default {
   filters: {
     date(val) {
@@ -206,6 +207,10 @@ export default {
       heroCats:[],    //职业数据
       videoCates:[],  //视频数据
       foldIcon:false, // 控制图标区域的展开
+
+      // lunbo:false,
+      
+      
     };
   },
   methods: {
@@ -233,19 +238,38 @@ export default {
     },
   },
   created(){
+    this.fetchHomeAds()
     this.fetchNewsCats();
     this.fetchHeroCats();
-    this.fetchHomeAds();
     this.fetchVideos();
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
-    }
+    },
   },
   mounted() {
-    this.swiper.slideTo(0, 1000, false);
+    
     // this.swiper.slideTo(0, 1000, false);//切换到第一个slide，速度为1秒
+  },
+  beforeUpdate() {
+    this.swiper.autoplay.stop();
+    // 监听轮播图加载情况,等轮播图都加载完毕再执行轮播
+    let swiperImg = $('.lunbo')
+    let time = setInterval(() => {
+        let val = swiperImg.map((i, v) => {
+            if (v.complete) {
+                return true
+            }
+        })
+        // console.log(val)
+        if (val.length === swiperImg.length) {
+            clearInterval(time)
+            // console.log('轮播图都加载完了')
+            // 继续轮播
+            this.swiper.autoplay.start();
+        }
+    }, 1000);
   }
 } 
 </script>
@@ -296,12 +320,12 @@ export default {
 }
 
 .fold  {
-        text-align: center;
-        .fold-icon {
-          &.down {
-            transform: rotateX(180deg);
-          }   
-        }
+  text-align: center;
+  .fold-icon {
+    &.down {
+      transform: rotateX(180deg);
+    }   
+  }
 }
         
         
