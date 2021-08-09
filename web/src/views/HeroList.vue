@@ -18,7 +18,7 @@
             v-for="(item, index) in heroList" 
             :key="index">
                 <div class="banner">
-                    <img :src="item.banner" class="banner-img" alt="banner">
+                    <img v-lazy="item.banner" class="banner-img" alt="banner">
                 </div>
                 <div 
                 class="name"
