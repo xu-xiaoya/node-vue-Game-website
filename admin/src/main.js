@@ -7,7 +7,10 @@ import * as echarts from 'echarts'
 
 import './scss/style.scss'
 import './style.css'
+import './scss/transition.scss'
 import http from './http'
+
+
 
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad,{

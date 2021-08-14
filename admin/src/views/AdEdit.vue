@@ -65,6 +65,7 @@ export default {
         }
     },
     methods: {
+
         async save() {
             // console.log('save');
             if (!this.model.name) {   
@@ -92,6 +93,7 @@ export default {
                 image: '',
                 url: ''
             })
+            
         },
         // 删除一个广告项
         delAd (index) {

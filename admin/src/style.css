@@ -95,3 +95,57 @@
     border-color: #ffa640;
     background-color: #ffa640;
 }
+
+.el-header {
+    background-color: #fffab3;
+    color: #333;
+    position: relative;
+    height: 50px !important;
+    line-height: 50px;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  }
+  
+.el-aside {
+    background-color: orange;
+    overflow: hidden;
+}
+
+.el-main {
+    background-color: rgb(253, 253, 235);
+    overflow-x: hidden
+}
+
+.el-menu {
+    background-color: orange;
+    border: none;
+}
+
+.el-menu i[class^="el-icon"] {
+    color: white;
+    margin-right: 10px; 
+}
+
+.el-menu span {
+    color: white;
+}
+
+.el-menu .el-submenu li{
+    background-color: rgb(255, 239, 185) ;
+    color:rgb(0, 0, 0);
+}
+.el-menu .el-submenu li:hover, .el-menu .el-submenu ul, .el-submenu__title:hover {
+    background-color: #ffe281 ;
+}
+.el-menu .el-submenu li .is-active{
+    background-color: #ffe07a ;
+}
+.el-submenu.is-active .el-submenu__title {
+    border-bottom-color: #0f6b1e;
+}
+.el-menu .el-submenu li:active{
+    background-color: #ffe281 ;
+}
+
+.el-menu .el-submenu li:visited, .el-menu .el-submenu ul, .el-submenu__title:visited {
+    background-color: #ffe281;
+}

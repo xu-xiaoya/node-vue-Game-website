@@ -79,13 +79,11 @@
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
           <el-dropdown>
-          <i class="el-icon-setting" style="margin-right: 15px"></i>
-          <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>查看</el-dropdown-item>
-              <el-dropdown-item>新增</el-dropdown-item>
-          </el-dropdown-menu>
+            <i class="el-icon-setting" style="margin-right: 15px"></i>
+            <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item @click = "$router.push(`/`)">前台</el-dropdown-item>
+            </el-dropdown-menu>
           </el-dropdown>
-          <span>erya</span>
       </el-header>
 
       <el-main>
@@ -107,54 +105,8 @@
 </template>
 
 
-<style>
-  .el-header {
-    /* background-color: #fffab3; */
-    color: #333;
-    position: relative;
-    height: 50px !important;
-    line-height: 50px;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
-  }
-  
-  .el-aside {
-    /* color: #333; */
-    /* background-color: rgb(255, 203, 126); */
-    background-color: orange;
-    overflow: hidden;
-    /* transition:  .3s; */
-  }
-  .el-main {
-      background-color: rgb(255, 255, 255);
-      overflow-x: hidden
-  }
-  .el-menu {
-    background-color: orange;
-    border: none;
-  }
-      
-  .el-menu i[class^="el-icon"] {
-      color: white;
-      margin-right: 10px; 
-  }
-  .el-menu span {
-      color: white;
-  }
-  .el-menu .el-submenu li, .el-menu .el-submenu ul .el-submenu__title {
-    background-color: rgb(255, 239, 185) !important;
-    color:rgb(0, 0, 0);
-  }
-  .el-menu .el-submenu li:hover, .el-menu .el-submenu ul, .el-submenu__title:hover {
-      background-color: #ffe281 !important;
-  }
-  .el-menu .el-submenu li:visited, .el-menu .el-submenu ul, .el-submenu__title:visited {
-      background-color: #ffe281 !important;
-  }
-  
-    
-</style>
-
 <script>
+  // import { debounce } from "./components/debounce";
   export default {
     data() {
       const item = {

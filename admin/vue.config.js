@@ -1,4 +1,19 @@
+const CompressionPlugin = require('compression-webpack-plugin')
 module.exports={
+    // gzip
+    configureWebpack: (config) => {
+        if (process.env.NODE_ENV === 'production') {
+            // 为生产环境修改配置...
+            config.mode = 'production'
+            return {
+                plugins: [new CompressionPlugin({
+                    test: /\.js$|\.html$|\.css/, //匹配文件名
+                    threshold: 10240, //对超过10k的数据进行压缩
+                    deleteOriginalAssets: false //是否删除原文件
+                })]
+            }
+        }
+    },
     chainWebpack:config=>{
           config.plugins.delete("prefetch")
           //删除index.html开头的带有prefetch属性的link
