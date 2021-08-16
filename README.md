@@ -1,76 +1,8 @@
-# node-vue-Game-website
- 
-## 一、初始化项目
-1.vue cli创建admin
-2.serve服务器端
-3.web游戏官网前端
-
-## 二、管理后台
-A.基于ElementUI搭建基本后台界面
- (1)Home界面 echarts图表
-
-1.创建分类
-2.分类列表
-3.修改分类
-4.删除分类
-5.子分类
-
-7.**通用CRUD（增删改查）接口**
-
-
-<!-- 
-创建功能步骤：
-后台：在server的models添加模型
-前台：
-（1）在Main.vue中添加菜单栏
-（2）在view文件夹中创建对应的页面（例如xxEdit.vue,xx.List.vue），修改路由
-（3）在router中的index添加页面的路由
- -->
-
-
-8.装备管理
-9.图片上传（multer）
-10.角色管理
-11.编辑英雄（关联、多选、el-select, multiple）
-12.技能编辑
-13.文章管理
-14.富文本编辑器（vue2-editor）
-
-15.首页广告管理
-
-16.管理员账号管理(密码加盐加密：bcryptjs)
-17.登录页面
-18.登录接口（jwt：jsonwebtoken)
-19.服务端登陆校验
-20.客户端路由限制
-
-## 三、移动端网站
-使用scss预编译器 (npm i -D sass sass-loader@8.x)
-1.样式重置(*,html,body,a……)
-2.创建色彩和文本对齐工具类
-3.通用flex布局样式
-4.padding和margin通用样式
-5.首页导航和轮播图（vue-awesome-swiper 3.1.3）
-6.使用精灵图片（sprite)/字体图片（iconfont）
-7.卡片组件(card)
-8.列表卡片组件（list-card nav swiper）
-9.首页新闻资讯数据导入、接口(dayjs 时间格式化)
-10.提取官网职业数据（ 在console中 $$('') 爬取数据，类似于css选择器)
-11.职业列表接口
-12.新闻详情页
-13.职业详情页
-
-## 四、发布和部署
-1.生产环境编译
-    npm run build   生成dist文件包
-    npm i -g serve  全局安装serve
-    serve dist      生成端口，访问页面
-2.域名和服务器
-3.域名解析
-4.Nginx安装和配置
-5.MongoDB数据库的安装和配置
-6.git安装、配置ssh-key
-7.Node.js安装
-8.拉取代码，安装pm2并启动项目
-9.配置Nginx反向代理
-10.迁移本地数据到服务器
+![zs1](https://user-images.githubusercontent.com/52959380/129500761-e29dfb51-6e11-472e-b128-a5b79b757e01.png)
+![zs2](https://user-images.githubusercontent.com/52959380/129500769-f39f475f-61b2-4515-862c-1c57859bf2aa.png)
+![zd3](https://user-images.githubusercontent.com/52959380/129500772-37d67989-dfc6-4177-b47b-2b6bbf7b21bf.png)
+![zs4](https://user-images.githubusercontent.com/52959380/129500774-04cbb545-97ce-45fc-8f51-f3321351b599.png)
+![zs5](https://user-images.githubusercontent.com/52959380/129500775-df058152-26fc-45aa-8d8a-e769c322e789.png)
+![admin1](https://user-images.githubusercontent.com/52959380/129500778-5e165b38-31ca-4521-a056-b223ec203472.png)
+![admin2](https://user-images.githubusercontent.com/52959380/129500780-ea59b77c-fe38-4319-8e49-a90d525f4a29.png)
+![admin3](https://user-images.githubusercontent.com/52959380/129500782-307dfb4d-408e-458e-89b5-9399b9ecea67.png)
