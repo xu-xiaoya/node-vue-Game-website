@@ -1,3 +1,17 @@
+本项目分为三端，serve为服务端，web为魔兽世界移动端官网，admin为后台管理系统。
+技术栈：vue+elementui+nodejs+mongdb
+
+# 项目启动教程
+### server、admin、web   
+npm run serve即可启动
+
+可使用http://localhost:3000/admin访问后台管理系统，http://localhost:3000/访问官网页面
+
+### 数据库mongdb
+本地安装mongdb并配置，
+推荐下载studio-3T数据库管理工具，连接20717端口并导入根目录下数据库文件，即可正常启动项目。
+
+
 # 项目页面展示：
 
 ![zs1](https://user-images.githubusercontent.com/52959380/129500761-e29dfb51-6e11-472e-b128-a5b79b757e01.png)
