@@ -34,6 +34,9 @@ export default {
             active:0
         }
     },
+    mounted() {
+        this.$router.push('/');
+    }
 }
 </script>
 
