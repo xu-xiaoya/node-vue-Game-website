@@ -1,5 +1,6 @@
 @charset "utf-8";
-@import './variable.scss';
+@use "sass:map";
+@use 'variable.scss';
 
 
 // 样式重置
@@ -26,7 +27,7 @@ p {
 }
 
 // colors
-@each $colorKey, $color in $colors {
+@each $colorKey, $color in variable.$colors {
     // 文本颜色
     .text-#{$colorKey} {
         color: $color;
@@ -47,9 +48,9 @@ p {
 }
 
 // font-size
-@each $sizeKey,$size in $font-sizes {
+@each $sizeKey,$size in variable.$font-sizes {
     .fs-#{$sizeKey} {
-        font-size: $size * $base-font-size;
+        font-size: $size * variable.$base-font-size;
     }
 }
 // text overflow
@@ -81,13 +82,13 @@ p {
     flex-wrap: wrap;
 }
 // 主轴对齐方式 justify-content
-@each $key, $value in $flex-jc {
+@each $key, $value in variable.$flex-jc {
     .jc-#{$key} {
         justify-content: $value;
     }
 }
 // 项目对齐方式 align-items
-@each $key, $value in $flex-ai {
+@each $key, $value in variable.$flex-ai {
     .ai-#{$key} {
         align-items: $value;
     }
@@ -101,38 +102,38 @@ p {
 }
 
 //spacing
-@each $typeKey, $type in $spacing-types {
+@each $typeKey, $type in variable.$spacing-types {
     //.m-1
-    @each $sizeKey, $size in $spacing-sizes {
+    @each $sizeKey, $size in variable.$spacing-sizes {
         // .m-1 {margin:0.25rem}
         .#{$typeKey}-#{$sizeKey} {
-            #{$type}: $size*$spacing-base-size;
+            #{$type}: $size*variable.$spacing-base-size;
         }
     }
     // .mx-1
-    @each $sizeKey, $size in $spacing-sizes {
+    @each $sizeKey, $size in variable.$spacing-sizes {
         .#{$typeKey}x-#{$sizeKey} {
-            #{$type}-left: $size*$spacing-base-size;
-            #{$type}-right: $size*$spacing-base-size;
+            #{$type}-left: $size*variable.$spacing-base-size;
+            #{$type}-right: $size*variable.$spacing-base-size;
 
         }
     }
     // .my-1
-    @each $sizeKey, $size in $spacing-sizes {
+    @each $sizeKey, $size in variable.$spacing-sizes {
         .#{$typeKey}y-#{$sizeKey} {
-            #{$type}-top: $size*$spacing-base-size;
-            #{$type}-bottom: $size*$spacing-base-size;
+            #{$type}-top: $size*variable.$spacing-base-size;
+            #{$type}-bottom: $size*variable.$spacing-base-size;
 
         }
     }
 
     
     //.mt-1
-    @each $directionKey, $direction in $spacing-directions{
-        @each $sizeKey, $size in $spacing-sizes {
+    @each $directionKey, $direction in variable.$spacing-directions{
+        @each $sizeKey, $size in variable.$spacing-sizes {
             // .mt-1 {margin-top:0.25rem}
             .#{$typeKey}#{$directionKey}-#{$sizeKey} {
-                #{$type}-#{$direction} : $size*$spacing-base-size;
+                #{$type}-#{$direction} : $size*variable.$spacing-base-size;
             }
         }
     }
@@ -143,20 +144,20 @@ p {
     border: none;
     border-radius: 0.1538rem;
     // map-get：从预定义的尺寸里选择一个
-    font-size: map-get($font-sizes, 'sm')*$base-font-size;
+    font-size: map.get(variable.$font-sizes, 'sm')*variable.$base-font-size;
     padding:0.2rem, 0.6rem;
     &.btn-lg {
         display: flex;
         justify-content: center;
         align-items: center;
         i {
-            color:map-get($colors, 'primary');
+            color:map.get(variable.$colors, 'primary');
             font-weight: bold;
             font-size: 1.5rem;
             margin-right: 0.5rem;
         }
-        background: map-get($colors, 'white-1');
-        border: 1px solid  map-get($colors, 'white-2');
+        background: map.get(variable.$colors, 'white-1');
+        border: 1px solid  map.get(variable.$colors, 'white-2');
         padding:  0.8rem 1rem;
         font-size: 1rem;
     }  
@@ -170,16 +171,16 @@ p {
         padding-bottom: 0.2rem;
         // &.active中间不要加空格！
         &.active {
-            color :map-get($colors, 'primary');
+            color :map.get(variable.$colors, 'primary');
             // background-color: turquoise;
-            border-bottom:3px solid map-get($colors, 'primary');
+            border-bottom:3px solid map.get(variable.$colors, 'primary');
         }
     }
     &.nav-inverse {
         .nav-item {
-            color:map-get($colors, 'white');
+            color:map.get(variable.$colors, 'white');
             &.active {
-                border-bottom-color: map-get($colors, 'white');
+                border-bottom-color: map.get(variable.$colors, 'white');
             }
         }
     }
